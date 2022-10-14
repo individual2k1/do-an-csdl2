@@ -1,0 +1,2842 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="QLRPCNSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="AdmId" />
+          </Key>
+          <Property Name="AdmId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Username" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Pass" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="FullName" Type="nvarchar" MaxLength="100" />
+          <Property Name="Bod" Type="datetime" />
+          <Property Name="Address" Type="nvarchar" MaxLength="200" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="20" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Booking">
+          <Key>
+            <PropertyRef Name="BooId" />
+          </Key>
+          <Property Name="BooId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CusId" Type="int" />
+          <Property Name="ShoId" Type="int" />
+          <Property Name="Quantity" Type="int" />
+          <Property Name="Bilmoney" Type="float" />
+          <Property Name="DateBooking" Type="datetime" />
+          <Property Name="Status" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Cinema">
+          <Key>
+            <PropertyRef Name="CinId" />
+          </Key>
+          <Property Name="CinId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameCi" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Address" Type="nvarchar" MaxLength="200" />
+          <Property Name="Seats" Type="int" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="20" />
+          <Property Name="Image" Type="nvarchar" MaxLength="100" />
+          <Property Name="Status" Type="int" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="CouId" />
+          </Key>
+          <Property Name="CouId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameCo" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Status" Type="int" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="CusId" />
+          </Key>
+          <Property Name="CusId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Username" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="CreditCard" Type="int" Nullable="false" />
+          <Property Name="FullName" Type="nvarchar" MaxLength="100" />
+          <Property Name="Bod" Type="datetime" />
+          <Property Name="Address" Type="nvarchar" MaxLength="200" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="20" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Avata" Type="nvarchar" MaxLength="100" />
+          <Property Name="Status" Type="int" />
+        </EntityType>
+        <EntityType Name="Feedback">
+          <Key>
+            <PropertyRef Name="FeeId" />
+          </Key>
+          <Property Name="FeeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FilId" Type="int" />
+          <Property Name="Avata" Type="nvarchar" MaxLength="100" />
+          <Property Name="FullName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Comment" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Created" Type="datetime" />
+          <Property Name="Status" Type="int" />
+        </EntityType>
+        <EntityType Name="Film">
+          <Key>
+            <PropertyRef Name="FilId" />
+          </Key>
+          <Property Name="FilId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TypId" Type="int" />
+          <Property Name="CouId" Type="int" />
+          <Property Name="NameF" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Director" Type="nvarchar" MaxLength="100" />
+          <Property Name="Actor" Type="nvarchar" MaxLength="100" />
+          <Property Name="Duration" Type="int" />
+          <Property Name="Description" Type="ntext" />
+          <Property Name="Detail" Type="ntext" />
+          <Property Name="Picture" Type="varchar" MaxLength="100" />
+          <Property Name="PictureBig" Type="varchar" MaxLength="100" />
+          <Property Name="Status" Type="int" />
+        </EntityType>
+        <EntityType Name="ShowTimes">
+          <Key>
+            <PropertyRef Name="ShoId" />
+          </Key>
+          <Property Name="ShoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FilId" Type="int" />
+          <Property Name="CinId" Type="int" />
+          <Property Name="ShowTime" Type="datetime" Nullable="false" />
+          <Property Name="Time" Type="time" Precision="7" />
+          <Property Name="View" Type="int" />
+          <Property Name="Price" Type="float" Nullable="false" />
+          <Property Name="Status" Type="int" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="TypeFilm">
+          <Key>
+            <PropertyRef Name="TypId" />
+          </Key>
+          <Property Name="TypId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameT" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Status" Type="int" />
+        </EntityType>
+        <Association Name="FK_Booking_CusId">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="Booking" Type="Self.Booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CusId" />
+            </Principal>
+            <Dependent Role="Booking">
+              <PropertyRef Name="CusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Booking_ShoId">
+          <End Role="ShowTimes" Type="Self.ShowTimes" Multiplicity="0..1" />
+          <End Role="Booking" Type="Self.Booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ShowTimes">
+              <PropertyRef Name="ShoId" />
+            </Principal>
+            <Dependent Role="Booking">
+              <PropertyRef Name="ShoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Feedback_FilId">
+          <End Role="Film" Type="Self.Film" Multiplicity="0..1" />
+          <End Role="Feedback" Type="Self.Feedback" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Film">
+              <PropertyRef Name="FilId" />
+            </Principal>
+            <Dependent Role="Feedback">
+              <PropertyRef Name="FilId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Film_CouId">
+          <End Role="Country" Type="Self.Country" Multiplicity="0..1" />
+          <End Role="Film" Type="Self.Film" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="CouId" />
+            </Principal>
+            <Dependent Role="Film">
+              <PropertyRef Name="CouId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Film_TypId">
+          <End Role="TypeFilm" Type="Self.TypeFilm" Multiplicity="0..1" />
+          <End Role="Film" Type="Self.Film" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeFilm">
+              <PropertyRef Name="TypId" />
+            </Principal>
+            <Dependent Role="Film">
+              <PropertyRef Name="TypId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ShowTimes_CinId">
+          <End Role="Cinema" Type="Self.Cinema" Multiplicity="0..1" />
+          <End Role="ShowTimes" Type="Self.ShowTimes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cinema">
+              <PropertyRef Name="CinId" />
+            </Principal>
+            <Dependent Role="ShowTimes">
+              <PropertyRef Name="CinId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ShowTimes_FilId">
+          <End Role="Film" Type="Self.Film" Multiplicity="0..1" />
+          <End Role="ShowTimes" Type="Self.ShowTimes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Film">
+              <PropertyRef Name="FilId" />
+            </Principal>
+            <Dependent Role="ShowTimes">
+              <PropertyRef Name="FilId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="sp_Admin_ChangePass" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Username" Type="varchar" Mode="In" />
+          <Parameter Name="Pass" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_Admin_CheckLogin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Username" Type="varchar" Mode="In" />
+          <Parameter Name="Pass" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_Admin_GetByAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_Admin_GetById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="AdmId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_Admin_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="AdmId" Type="int" Mode="In" />
+          <Parameter Name="FullName" Type="nvarchar" Mode="In" />
+          <Parameter Name="Bod" Type="datetime" Mode="In" />
+          <Parameter Name="Address" Type="nvarchar" Mode="In" />
+          <Parameter Name="Phone" Type="nvarchar" Mode="In" />
+          <Parameter Name="Email" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_Booking_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="BooId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_Booking_GetByAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_Booking_GetByCusId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CusId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_Booking_GetById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="BooId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_Booking_GetByShoId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ShoId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_Booking_GetByTop" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Top" Type="nvarchar" Mode="In" />
+          <Parameter Name="Where" Type="nvarchar" Mode="In" />
+          <Parameter Name="Order" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_Booking_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CusId" Type="int" Mode="In" />
+          <Parameter Name="ShoId" Type="int" Mode="In" />
+          <Parameter Name="Bilmoney" Type="float" Mode="In" />
+          <Parameter Name="Quantity" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_Booking_Sum" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ShoId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_Booking_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="BooId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_Cinema_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CinId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_Cinema_GetByAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_Cinema_GetById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CinId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_Cinema_GetByTop" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Top" Type="nvarchar" Mode="In" />
+          <Parameter Name="Where" Type="nvarchar" Mode="In" />
+          <Parameter Name="Order" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_Cinema_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NameCi" Type="nvarchar" Mode="In" />
+          <Parameter Name="Address" Type="nvarchar" Mode="In" />
+          <Parameter Name="Seats" Type="int" Mode="In" />
+          <Parameter Name="Phone" Type="nvarchar" Mode="In" />
+          <Parameter Name="Image" Type="nvarchar" Mode="In" />
+          <Parameter Name="Status" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_Cinema_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CinId" Type="int" Mode="In" />
+          <Parameter Name="NameCi" Type="nvarchar" Mode="In" />
+          <Parameter Name="Address" Type="nvarchar" Mode="In" />
+          <Parameter Name="Seats" Type="int" Mode="In" />
+          <Parameter Name="Phone" Type="nvarchar" Mode="In" />
+          <Parameter Name="Image" Type="nvarchar" Mode="In" />
+          <Parameter Name="Status" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_Cinema_Update_Status" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CinId" Type="int" Mode="In" />
+          <Parameter Name="Status" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_Country_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CouId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_Country_GetByAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_Country_GetById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CouId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_Country_GetByTop" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Top" Type="nvarchar" Mode="In" />
+          <Parameter Name="Where" Type="nvarchar" Mode="In" />
+          <Parameter Name="Order" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_Country_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NameCo" Type="nvarchar" Mode="In" />
+          <Parameter Name="Status" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_Country_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CouId" Type="int" Mode="In" />
+          <Parameter Name="NameCo" Type="nvarchar" Mode="In" />
+          <Parameter Name="Status" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_Country_Update_Status" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CouId" Type="int" Mode="In" />
+          <Parameter Name="Status" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_Customer_ChangePass" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Username" Type="nvarchar" Mode="In" />
+          <Parameter Name="Pass" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_Customer_CheckLogin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Username" Type="nvarchar" Mode="In" />
+          <Parameter Name="Pass" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_Customer_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CusId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_Customer_GetByAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_Customer_GetById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CusId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_Customer_GetByTop" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Top" Type="nvarchar" Mode="In" />
+          <Parameter Name="Where" Type="nvarchar" Mode="In" />
+          <Parameter Name="Order" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_Customer_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Username" Type="nvarchar" Mode="In" />
+          <Parameter Name="Password" Type="nvarchar" Mode="In" />
+          <Parameter Name="CreditCard" Type="int" Mode="In" />
+          <Parameter Name="FullName" Type="nvarchar" Mode="In" />
+          <Parameter Name="Bod" Type="datetime" Mode="In" />
+          <Parameter Name="Address" Type="nvarchar" Mode="In" />
+          <Parameter Name="Phone" Type="nvarchar" Mode="In" />
+          <Parameter Name="Email" Type="nvarchar" Mode="In" />
+          <Parameter Name="Avata" Type="nvarchar" Mode="In" />
+          <Parameter Name="Status" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_Customer_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CusId" Type="int" Mode="In" />
+          <Parameter Name="Username" Type="nvarchar" Mode="In" />
+          <Parameter Name="CreditCard" Type="int" Mode="In" />
+          <Parameter Name="FullName" Type="nvarchar" Mode="In" />
+          <Parameter Name="Bod" Type="datetime" Mode="In" />
+          <Parameter Name="Address" Type="nvarchar" Mode="In" />
+          <Parameter Name="Phone" Type="nvarchar" Mode="In" />
+          <Parameter Name="Email" Type="nvarchar" Mode="In" />
+          <Parameter Name="Avata" Type="nvarchar" Mode="In" />
+          <Parameter Name="Status" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_Customer_Update_Status" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CusId" Type="int" Mode="In" />
+          <Parameter Name="Status" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_Feedback_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FeeId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_Feedback_GetByAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_Feedback_GetByFilId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FilId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_Feedback_GetById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FeeId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_Feedback_GetByTop" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Top" Type="nvarchar" Mode="In" />
+          <Parameter Name="Where" Type="nvarchar" Mode="In" />
+          <Parameter Name="Order" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_Feedback_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FilId" Type="int" Mode="In" />
+          <Parameter Name="Avata" Type="nvarchar" Mode="In" />
+          <Parameter Name="FullName" Type="nvarchar" Mode="In" />
+          <Parameter Name="Comment" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_Feedback_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FeeId" Type="int" Mode="In" />
+          <Parameter Name="FilId" Type="int" Mode="In" />
+          <Parameter Name="Avata" Type="nvarchar" Mode="In" />
+          <Parameter Name="FullName" Type="nvarchar" Mode="In" />
+          <Parameter Name="Comment" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_Film_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FilId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_Film_GetByAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_Film_GetByCouId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CouId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_Film_GetById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FilId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_Film_GetByTop" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Top" Type="nvarchar" Mode="In" />
+          <Parameter Name="Where" Type="nvarchar" Mode="In" />
+          <Parameter Name="Order" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_Film_GetByTypId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="TypId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_Film_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="TypId" Type="int" Mode="In" />
+          <Parameter Name="CouId" Type="int" Mode="In" />
+          <Parameter Name="NameF" Type="nvarchar" Mode="In" />
+          <Parameter Name="Director" Type="nvarchar" Mode="In" />
+          <Parameter Name="Actor" Type="nvarchar" Mode="In" />
+          <Parameter Name="Duration" Type="int" Mode="In" />
+          <Parameter Name="Description" Type="ntext" Mode="In" />
+          <Parameter Name="Detail" Type="ntext" Mode="In" />
+          <Parameter Name="Picture" Type="varchar" Mode="In" />
+          <Parameter Name="PictureBig" Type="varchar" Mode="In" />
+          <Parameter Name="Status" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_Film_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FilId" Type="int" Mode="In" />
+          <Parameter Name="TypId" Type="int" Mode="In" />
+          <Parameter Name="CouId" Type="int" Mode="In" />
+          <Parameter Name="NameF" Type="nvarchar" Mode="In" />
+          <Parameter Name="Director" Type="nvarchar" Mode="In" />
+          <Parameter Name="Actor" Type="nvarchar" Mode="In" />
+          <Parameter Name="Duration" Type="int" Mode="In" />
+          <Parameter Name="Description" Type="ntext" Mode="In" />
+          <Parameter Name="Detail" Type="ntext" Mode="In" />
+          <Parameter Name="Picture" Type="varchar" Mode="In" />
+          <Parameter Name="PictureBig" Type="varchar" Mode="In" />
+          <Parameter Name="Status" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_Film_Update_Status" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FilId" Type="int" Mode="In" />
+          <Parameter Name="Status" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_ShowTimes_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ShoId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_ShowTimes_GetByAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_ShowTimes_GetByCinId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CinId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_ShowTimes_GetByFilId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FilId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_ShowTimes_GetById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ShoId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_ShowTimes_GetByTop" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Top" Type="nvarchar" Mode="In" />
+          <Parameter Name="Where" Type="nvarchar" Mode="In" />
+          <Parameter Name="Order" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_ShowTimes_GetByTop1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Top" Type="nvarchar" Mode="In" />
+          <Parameter Name="Where" Type="nvarchar" Mode="In" />
+          <Parameter Name="Order" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_ShowTimes_GetByTop2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Top" Type="nvarchar" Mode="In" />
+          <Parameter Name="Where" Type="nvarchar" Mode="In" />
+          <Parameter Name="Order" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_ShowTimes_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FilId" Type="int" Mode="In" />
+          <Parameter Name="CinId" Type="int" Mode="In" />
+          <Parameter Name="ShowTime" Type="datetime" Mode="In" />
+          <Parameter Name="Time" Type="time" Mode="In" />
+          <Parameter Name="Price" Type="float" Mode="In" />
+          <Parameter Name="Status" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_ShowTimes_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ShoId" Type="int" Mode="In" />
+          <Parameter Name="FilId" Type="int" Mode="In" />
+          <Parameter Name="CinId" Type="int" Mode="In" />
+          <Parameter Name="ShowTime" Type="datetime" Mode="In" />
+          <Parameter Name="Time" Type="time" Mode="In" />
+          <Parameter Name="Price" Type="float" Mode="In" />
+          <Parameter Name="Status" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_ShowTimes_Update_Price" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ShoId" Type="int" Mode="In" />
+          <Parameter Name="Price" Type="float" Mode="In" />
+        </Function>
+        <Function Name="sp_ShowTimes_Update_Status" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ShoId" Type="int" Mode="In" />
+          <Parameter Name="Status" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_ShowTimes_Update_View" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FilId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_TypeFilm_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="TypId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_TypeFilm_GetByAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_TypeFilm_GetById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="TypId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_TypeFilm_GetByTop" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Top" Type="nvarchar" Mode="In" />
+          <Parameter Name="Where" Type="nvarchar" Mode="In" />
+          <Parameter Name="Order" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_TypeFilm_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NameT" Type="nvarchar" Mode="In" />
+          <Parameter Name="Status" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_TypeFilm_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="TypId" Type="int" Mode="In" />
+          <Parameter Name="NameT" Type="nvarchar" Mode="In" />
+          <Parameter Name="Status" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_TypeFilm_Update_Status" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="TypId" Type="int" Mode="In" />
+          <Parameter Name="Status" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="QLRPCNSModelStoreContainer">
+          <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Booking" EntityType="Self.Booking" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cinema" EntityType="Self.Cinema" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Feedback" EntityType="Self.Feedback" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Film" EntityType="Self.Film" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ShowTimes" EntityType="Self.ShowTimes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TypeFilm" EntityType="Self.TypeFilm" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Booking_CusId" Association="Self.FK_Booking_CusId">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Booking" EntitySet="Booking" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Booking_ShoId" Association="Self.FK_Booking_ShoId">
+            <End Role="ShowTimes" EntitySet="ShowTimes" />
+            <End Role="Booking" EntitySet="Booking" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Feedback_FilId" Association="Self.FK_Feedback_FilId">
+            <End Role="Film" EntitySet="Film" />
+            <End Role="Feedback" EntitySet="Feedback" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Film_CouId" Association="Self.FK_Film_CouId">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="Film" EntitySet="Film" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Film_TypId" Association="Self.FK_Film_TypId">
+            <End Role="TypeFilm" EntitySet="TypeFilm" />
+            <End Role="Film" EntitySet="Film" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ShowTimes_CinId" Association="Self.FK_ShowTimes_CinId">
+            <End Role="Cinema" EntitySet="Cinema" />
+            <End Role="ShowTimes" EntitySet="ShowTimes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ShowTimes_FilId" Association="Self.FK_ShowTimes_FilId">
+            <End Role="Film" EntitySet="Film" />
+            <End Role="ShowTimes" EntitySet="ShowTimes" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="QLRPCNSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="AdmId" />
+          </Key>
+          <Property Name="AdmId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Pass" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FullName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Bod" Type="DateTime" Precision="3" />
+          <Property Name="Address" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Booking">
+          <Key>
+            <PropertyRef Name="BooId" />
+          </Key>
+          <Property Name="BooId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CusId" Type="Int32" />
+          <Property Name="ShoId" Type="Int32" />
+          <Property Name="Quantity" Type="Int32" />
+          <Property Name="Bilmoney" Type="Double" />
+          <Property Name="DateBooking" Type="DateTime" Precision="3" />
+          <Property Name="Status" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK_Booking_CusId" FromRole="Booking" ToRole="Customer" />
+          <NavigationProperty Name="ShowTime" Relationship="Self.FK_Booking_ShoId" FromRole="Booking" ToRole="ShowTimes" />
+        </EntityType>
+        <EntityType Name="Cinema">
+          <Key>
+            <PropertyRef Name="CinId" />
+          </Key>
+          <Property Name="CinId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameCi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Seats" Type="Int32" />
+          <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Image" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Int32" />
+          <NavigationProperty Name="ShowTimes" Relationship="Self.FK_ShowTimes_CinId" FromRole="Cinema" ToRole="ShowTimes" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="CouId" />
+          </Key>
+          <Property Name="CouId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameCo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Status" Type="Int32" />
+          <NavigationProperty Name="Films" Relationship="Self.FK_Film_CouId" FromRole="Country" ToRole="Film" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="CusId" />
+          </Key>
+          <Property Name="CusId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreditCard" Type="Int32" Nullable="false" />
+          <Property Name="FullName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Bod" Type="DateTime" Precision="3" />
+          <Property Name="Address" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Avata" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Int32" />
+          <NavigationProperty Name="Bookings" Relationship="Self.FK_Booking_CusId" FromRole="Customer" ToRole="Booking" />
+        </EntityType>
+        <EntityType Name="Feedback">
+          <Key>
+            <PropertyRef Name="FeeId" />
+          </Key>
+          <Property Name="FeeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FilId" Type="Int32" />
+          <Property Name="Avata" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="FullName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Comment" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Created" Type="DateTime" Precision="3" />
+          <Property Name="Status" Type="Int32" />
+          <NavigationProperty Name="Film" Relationship="Self.FK_Feedback_FilId" FromRole="Feedback" ToRole="Film" />
+        </EntityType>
+        <EntityType Name="Film">
+          <Key>
+            <PropertyRef Name="FilId" />
+          </Key>
+          <Property Name="FilId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TypId" Type="Int32" />
+          <Property Name="CouId" Type="Int32" />
+          <Property Name="NameF" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Director" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Actor" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Duration" Type="Int32" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Detail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Picture" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PictureBig" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="Int32" />
+          <NavigationProperty Name="Country" Relationship="Self.FK_Film_CouId" FromRole="Film" ToRole="Country" />
+          <NavigationProperty Name="Feedbacks" Relationship="Self.FK_Feedback_FilId" FromRole="Film" ToRole="Feedback" />
+          <NavigationProperty Name="TypeFilm" Relationship="Self.FK_Film_TypId" FromRole="Film" ToRole="TypeFilm" />
+          <NavigationProperty Name="ShowTimes" Relationship="Self.FK_ShowTimes_FilId" FromRole="Film" ToRole="ShowTimes" />
+        </EntityType>
+        <EntityType Name="ShowTime">
+          <Key>
+            <PropertyRef Name="ShoId" />
+          </Key>
+          <Property Name="ShoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FilId" Type="Int32" />
+          <Property Name="CinId" Type="Int32" />
+          <Property Name="ShowTime1" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Time" Type="Time" Precision="7" />
+          <Property Name="View" Type="Int32" />
+          <Property Name="Price" Type="Double" Nullable="false" />
+          <Property Name="Status" Type="Int32" />
+          <NavigationProperty Name="Bookings" Relationship="Self.FK_Booking_ShoId" FromRole="ShowTimes" ToRole="Booking" />
+          <NavigationProperty Name="Cinema" Relationship="Self.FK_ShowTimes_CinId" FromRole="ShowTimes" ToRole="Cinema" />
+          <NavigationProperty Name="Film" Relationship="Self.FK_ShowTimes_FilId" FromRole="ShowTimes" ToRole="Film" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="TypeFilm">
+          <Key>
+            <PropertyRef Name="TypId" />
+          </Key>
+          <Property Name="TypId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameT" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Status" Type="Int32" />
+          <NavigationProperty Name="Films" Relationship="Self.FK_Film_TypId" FromRole="TypeFilm" ToRole="Film" />
+        </EntityType>
+        <Association Name="FK_Booking_CusId">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="Booking" Type="Self.Booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CusId" />
+            </Principal>
+            <Dependent Role="Booking">
+              <PropertyRef Name="CusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Booking_ShoId">
+          <End Role="ShowTimes" Type="Self.ShowTime" Multiplicity="0..1" />
+          <End Role="Booking" Type="Self.Booking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ShowTimes">
+              <PropertyRef Name="ShoId" />
+            </Principal>
+            <Dependent Role="Booking">
+              <PropertyRef Name="ShoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ShowTimes_CinId">
+          <End Role="Cinema" Type="Self.Cinema" Multiplicity="0..1" />
+          <End Role="ShowTimes" Type="Self.ShowTime" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cinema">
+              <PropertyRef Name="CinId" />
+            </Principal>
+            <Dependent Role="ShowTimes">
+              <PropertyRef Name="CinId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Film_CouId">
+          <End Role="Country" Type="Self.Country" Multiplicity="0..1" />
+          <End Role="Film" Type="Self.Film" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="CouId" />
+            </Principal>
+            <Dependent Role="Film">
+              <PropertyRef Name="CouId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Feedback_FilId">
+          <End Role="Film" Type="Self.Film" Multiplicity="0..1" />
+          <End Role="Feedback" Type="Self.Feedback" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Film">
+              <PropertyRef Name="FilId" />
+            </Principal>
+            <Dependent Role="Feedback">
+              <PropertyRef Name="FilId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Film_TypId">
+          <End Role="TypeFilm" Type="Self.TypeFilm" Multiplicity="0..1" />
+          <End Role="Film" Type="Self.Film" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeFilm">
+              <PropertyRef Name="TypId" />
+            </Principal>
+            <Dependent Role="Film">
+              <PropertyRef Name="TypId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ShowTimes_FilId">
+          <End Role="Film" Type="Self.Film" Multiplicity="0..1" />
+          <End Role="ShowTimes" Type="Self.ShowTime" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Film">
+              <PropertyRef Name="FilId" />
+            </Principal>
+            <Dependent Role="ShowTimes">
+              <PropertyRef Name="FilId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="QLRPCNSEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Admins" EntityType="Self.Admin" />
+          <EntitySet Name="Bookings" EntityType="Self.Booking" />
+          <EntitySet Name="Cinemas" EntityType="Self.Cinema" />
+          <EntitySet Name="Countries" EntityType="Self.Country" />
+          <EntitySet Name="Customers" EntityType="Self.Customer" />
+          <EntitySet Name="Feedbacks" EntityType="Self.Feedback" />
+          <EntitySet Name="Films" EntityType="Self.Film" />
+          <EntitySet Name="ShowTimes" EntityType="Self.ShowTime" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="TypeFilms" EntityType="Self.TypeFilm" />
+          <AssociationSet Name="FK_Booking_CusId" Association="Self.FK_Booking_CusId">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="Booking" EntitySet="Bookings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Booking_ShoId" Association="Self.FK_Booking_ShoId">
+            <End Role="ShowTimes" EntitySet="ShowTimes" />
+            <End Role="Booking" EntitySet="Bookings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ShowTimes_CinId" Association="Self.FK_ShowTimes_CinId">
+            <End Role="Cinema" EntitySet="Cinemas" />
+            <End Role="ShowTimes" EntitySet="ShowTimes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Film_CouId" Association="Self.FK_Film_CouId">
+            <End Role="Country" EntitySet="Countries" />
+            <End Role="Film" EntitySet="Films" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Feedback_FilId" Association="Self.FK_Feedback_FilId">
+            <End Role="Film" EntitySet="Films" />
+            <End Role="Feedback" EntitySet="Feedbacks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Film_TypId" Association="Self.FK_Film_TypId">
+            <End Role="TypeFilm" EntitySet="TypeFilms" />
+            <End Role="Film" EntitySet="Films" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ShowTimes_FilId" Association="Self.FK_ShowTimes_FilId">
+            <End Role="Film" EntitySet="Films" />
+            <End Role="ShowTimes" EntitySet="ShowTimes" />
+          </AssociationSet>
+          <FunctionImport Name="sp_Admin_ChangePass">
+            <Parameter Name="Username" Mode="In" Type="String" />
+            <Parameter Name="Pass" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Admin_CheckLogin" ReturnType="Collection(QLRPCNSModel.sp_Admin_CheckLogin_Result)">
+            <Parameter Name="Username" Mode="In" Type="String" />
+            <Parameter Name="Pass" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Admin_GetByAll" ReturnType="Collection(QLRPCNSModel.sp_Admin_GetByAll_Result)" />
+          <FunctionImport Name="sp_Admin_GetById" ReturnType="Collection(QLRPCNSModel.sp_Admin_GetById_Result)">
+          <Parameter Name="AdmId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Admin_Update">
+            <Parameter Name="AdmId" Mode="In" Type="Int32" />
+            <Parameter Name="FullName" Mode="In" Type="String" />
+            <Parameter Name="Bod" Mode="In" Type="DateTime" />
+            <Parameter Name="Address" Mode="In" Type="String" />
+            <Parameter Name="Phone" Mode="In" Type="String" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Booking_Delete">
+          <Parameter Name="BooId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Booking_GetByAll" ReturnType="Collection(QLRPCNSModel.sp_Booking_GetByAll_Result)" />
+          <FunctionImport Name="sp_Booking_GetByCusId" ReturnType="Collection(QLRPCNSModel.sp_Booking_GetByCusId_Result)">
+          <Parameter Name="CusId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Booking_GetById" ReturnType="Collection(QLRPCNSModel.sp_Booking_GetById_Result)">
+          <Parameter Name="BooId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Booking_GetByShoId" ReturnType="Collection(QLRPCNSModel.sp_Booking_GetByShoId_Result)">
+          <Parameter Name="ShoId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Booking_GetByTop">
+            <Parameter Name="Top" Mode="In" Type="String" />
+            <Parameter Name="Where" Mode="In" Type="String" />
+            <Parameter Name="Order" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Booking_Insert">
+            <Parameter Name="CusId" Mode="In" Type="Int32" />
+            <Parameter Name="ShoId" Mode="In" Type="Int32" />
+            <Parameter Name="Bilmoney" Mode="In" Type="Double" />
+            <Parameter Name="Quantity" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Booking_Sum" ReturnType="Collection(Int32)">
+          <Parameter Name="ShoId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Booking_Update">
+          <Parameter Name="BooId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Cinema_Delete">
+          <Parameter Name="CinId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Cinema_GetByAll" ReturnType="Collection(QLRPCNSModel.sp_Cinema_GetByAll_Result)" />
+          <FunctionImport Name="sp_Cinema_GetById" ReturnType="Collection(QLRPCNSModel.sp_Cinema_GetById_Result)">
+          <Parameter Name="CinId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Cinema_GetByTop">
+            <Parameter Name="Top" Mode="In" Type="String" />
+            <Parameter Name="Where" Mode="In" Type="String" />
+            <Parameter Name="Order" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Cinema_Insert">
+            <Parameter Name="NameCi" Mode="In" Type="String" />
+            <Parameter Name="Address" Mode="In" Type="String" />
+            <Parameter Name="Seats" Mode="In" Type="Int32" />
+            <Parameter Name="Phone" Mode="In" Type="String" />
+            <Parameter Name="Image" Mode="In" Type="String" />
+            <Parameter Name="Status" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Cinema_Update">
+            <Parameter Name="CinId" Mode="In" Type="Int32" />
+            <Parameter Name="NameCi" Mode="In" Type="String" />
+            <Parameter Name="Address" Mode="In" Type="String" />
+            <Parameter Name="Seats" Mode="In" Type="Int32" />
+            <Parameter Name="Phone" Mode="In" Type="String" />
+            <Parameter Name="Image" Mode="In" Type="String" />
+            <Parameter Name="Status" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Cinema_Update_Status">
+            <Parameter Name="CinId" Mode="In" Type="Int32" />
+            <Parameter Name="Status" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Country_Delete">
+          <Parameter Name="CouId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Country_GetByAll" ReturnType="Collection(QLRPCNSModel.sp_Country_GetByAll_Result)" />
+          <FunctionImport Name="sp_Country_GetById" ReturnType="Collection(QLRPCNSModel.sp_Country_GetById_Result)">
+          <Parameter Name="CouId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Country_GetByTop">
+            <Parameter Name="Top" Mode="In" Type="String" />
+            <Parameter Name="Where" Mode="In" Type="String" />
+            <Parameter Name="Order" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Country_Insert">
+            <Parameter Name="NameCo" Mode="In" Type="String" />
+            <Parameter Name="Status" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Country_Update">
+            <Parameter Name="CouId" Mode="In" Type="Int32" />
+            <Parameter Name="NameCo" Mode="In" Type="String" />
+            <Parameter Name="Status" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Country_Update_Status">
+            <Parameter Name="CouId" Mode="In" Type="Int32" />
+            <Parameter Name="Status" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Customer_ChangePass">
+            <Parameter Name="Username" Mode="In" Type="String" />
+            <Parameter Name="Pass" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Customer_CheckLogin" ReturnType="Collection(QLRPCNSModel.sp_Customer_CheckLogin_Result)">
+            <Parameter Name="Username" Mode="In" Type="String" />
+            <Parameter Name="Pass" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Customer_Delete">
+          <Parameter Name="CusId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Customer_GetByAll" ReturnType="Collection(QLRPCNSModel.sp_Customer_GetByAll_Result)" />
+          <FunctionImport Name="sp_Customer_GetById" ReturnType="Collection(QLRPCNSModel.sp_Customer_GetById_Result)">
+          <Parameter Name="CusId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Customer_GetByTop">
+            <Parameter Name="Top" Mode="In" Type="String" />
+            <Parameter Name="Where" Mode="In" Type="String" />
+            <Parameter Name="Order" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Customer_Insert">
+            <Parameter Name="Username" Mode="In" Type="String" />
+            <Parameter Name="Password" Mode="In" Type="String" />
+            <Parameter Name="CreditCard" Mode="In" Type="Int32" />
+            <Parameter Name="FullName" Mode="In" Type="String" />
+            <Parameter Name="Bod" Mode="In" Type="DateTime" />
+            <Parameter Name="Address" Mode="In" Type="String" />
+            <Parameter Name="Phone" Mode="In" Type="String" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="Avata" Mode="In" Type="String" />
+            <Parameter Name="Status" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Customer_Update">
+            <Parameter Name="CusId" Mode="In" Type="Int32" />
+            <Parameter Name="Username" Mode="In" Type="String" />
+            <Parameter Name="CreditCard" Mode="In" Type="Int32" />
+            <Parameter Name="FullName" Mode="In" Type="String" />
+            <Parameter Name="Bod" Mode="In" Type="DateTime" />
+            <Parameter Name="Address" Mode="In" Type="String" />
+            <Parameter Name="Phone" Mode="In" Type="String" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="Avata" Mode="In" Type="String" />
+            <Parameter Name="Status" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Customer_Update_Status">
+            <Parameter Name="CusId" Mode="In" Type="Int32" />
+            <Parameter Name="Status" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Feedback_Delete">
+          <Parameter Name="FeeId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Feedback_GetByAll" ReturnType="Collection(QLRPCNSModel.sp_Feedback_GetByAll_Result)" />
+          <FunctionImport Name="sp_Feedback_GetByFilId" ReturnType="Collection(QLRPCNSModel.sp_Feedback_GetByFilId_Result)">
+          <Parameter Name="FilId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Feedback_GetById" ReturnType="Collection(QLRPCNSModel.sp_Feedback_GetById_Result)">
+          <Parameter Name="FeeId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Feedback_GetByTop">
+            <Parameter Name="Top" Mode="In" Type="String" />
+            <Parameter Name="Where" Mode="In" Type="String" />
+            <Parameter Name="Order" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Feedback_Insert">
+            <Parameter Name="FilId" Mode="In" Type="Int32" />
+            <Parameter Name="Avata" Mode="In" Type="String" />
+            <Parameter Name="FullName" Mode="In" Type="String" />
+            <Parameter Name="Comment" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Feedback_Update">
+            <Parameter Name="FeeId" Mode="In" Type="Int32" />
+            <Parameter Name="FilId" Mode="In" Type="Int32" />
+            <Parameter Name="Avata" Mode="In" Type="String" />
+            <Parameter Name="FullName" Mode="In" Type="String" />
+            <Parameter Name="Comment" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Film_Delete">
+          <Parameter Name="FilId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Film_GetByAll" ReturnType="Collection(QLRPCNSModel.sp_Film_GetByAll_Result)" />
+          <FunctionImport Name="sp_Film_GetByCouId" ReturnType="Collection(QLRPCNSModel.sp_Film_GetByCouId_Result)">
+          <Parameter Name="CouId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Film_GetById" ReturnType="Collection(QLRPCNSModel.sp_Film_GetById_Result)">
+          <Parameter Name="FilId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Film_GetByTop">
+            <Parameter Name="Top" Mode="In" Type="String" />
+            <Parameter Name="Where" Mode="In" Type="String" />
+            <Parameter Name="Order" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Film_GetByTypId" ReturnType="Collection(QLRPCNSModel.sp_Film_GetByTypId_Result)">
+          <Parameter Name="TypId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Film_Insert">
+            <Parameter Name="TypId" Mode="In" Type="Int32" />
+            <Parameter Name="CouId" Mode="In" Type="Int32" />
+            <Parameter Name="NameF" Mode="In" Type="String" />
+            <Parameter Name="Director" Mode="In" Type="String" />
+            <Parameter Name="Actor" Mode="In" Type="String" />
+            <Parameter Name="Duration" Mode="In" Type="Int32" />
+            <Parameter Name="Description" Mode="In" Type="String" />
+            <Parameter Name="Detail" Mode="In" Type="String" />
+            <Parameter Name="Picture" Mode="In" Type="String" />
+            <Parameter Name="PictureBig" Mode="In" Type="String" />
+            <Parameter Name="Status" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Film_Update">
+            <Parameter Name="FilId" Mode="In" Type="Int32" />
+            <Parameter Name="TypId" Mode="In" Type="Int32" />
+            <Parameter Name="CouId" Mode="In" Type="Int32" />
+            <Parameter Name="NameF" Mode="In" Type="String" />
+            <Parameter Name="Director" Mode="In" Type="String" />
+            <Parameter Name="Actor" Mode="In" Type="String" />
+            <Parameter Name="Duration" Mode="In" Type="Int32" />
+            <Parameter Name="Description" Mode="In" Type="String" />
+            <Parameter Name="Detail" Mode="In" Type="String" />
+            <Parameter Name="Picture" Mode="In" Type="String" />
+            <Parameter Name="PictureBig" Mode="In" Type="String" />
+            <Parameter Name="Status" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_Film_Update_Status">
+            <Parameter Name="FilId" Mode="In" Type="Int32" />
+            <Parameter Name="Status" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(QLRPCNSModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(QLRPCNSModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_ShowTimes_Delete">
+          <Parameter Name="ShoId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_ShowTimes_GetByAll" ReturnType="Collection(QLRPCNSModel.sp_ShowTimes_GetByAll_Result)" />
+          <FunctionImport Name="sp_ShowTimes_GetByCinId" ReturnType="Collection(QLRPCNSModel.sp_ShowTimes_GetByCinId_Result)">
+          <Parameter Name="CinId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_ShowTimes_GetByFilId" ReturnType="Collection(QLRPCNSModel.sp_ShowTimes_GetByFilId_Result)">
+          <Parameter Name="FilId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_ShowTimes_GetById" ReturnType="Collection(QLRPCNSModel.sp_ShowTimes_GetById_Result)">
+          <Parameter Name="ShoId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_ShowTimes_GetByTop">
+            <Parameter Name="Top" Mode="In" Type="String" />
+            <Parameter Name="Where" Mode="In" Type="String" />
+            <Parameter Name="Order" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_ShowTimes_GetByTop1">
+            <Parameter Name="Top" Mode="In" Type="String" />
+            <Parameter Name="Where" Mode="In" Type="String" />
+            <Parameter Name="Order" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_ShowTimes_GetByTop2">
+            <Parameter Name="Top" Mode="In" Type="String" />
+            <Parameter Name="Where" Mode="In" Type="String" />
+            <Parameter Name="Order" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_ShowTimes_Insert">
+            <Parameter Name="FilId" Mode="In" Type="Int32" />
+            <Parameter Name="CinId" Mode="In" Type="Int32" />
+            <Parameter Name="ShowTime" Mode="In" Type="DateTime" />
+            <Parameter Name="Time" Mode="In" Type="Time" />
+            <Parameter Name="Price" Mode="In" Type="Double" />
+            <Parameter Name="Status" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_ShowTimes_Update">
+            <Parameter Name="ShoId" Mode="In" Type="Int32" />
+            <Parameter Name="FilId" Mode="In" Type="Int32" />
+            <Parameter Name="CinId" Mode="In" Type="Int32" />
+            <Parameter Name="ShowTime" Mode="In" Type="DateTime" />
+            <Parameter Name="Time" Mode="In" Type="Time" />
+            <Parameter Name="Price" Mode="In" Type="Double" />
+            <Parameter Name="Status" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_ShowTimes_Update_Price">
+            <Parameter Name="ShoId" Mode="In" Type="Int32" />
+            <Parameter Name="Price" Mode="In" Type="Double" />
+          </FunctionImport>
+          <FunctionImport Name="sp_ShowTimes_Update_Status">
+            <Parameter Name="ShoId" Mode="In" Type="Int32" />
+            <Parameter Name="Status" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_ShowTimes_Update_View">
+          <Parameter Name="FilId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_TypeFilm_Delete">
+          <Parameter Name="TypId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_TypeFilm_GetByAll" ReturnType="Collection(QLRPCNSModel.sp_TypeFilm_GetByAll_Result)" />
+          <FunctionImport Name="sp_TypeFilm_GetById" ReturnType="Collection(QLRPCNSModel.sp_TypeFilm_GetById_Result)">
+          <Parameter Name="TypId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_TypeFilm_GetByTop">
+            <Parameter Name="Top" Mode="In" Type="String" />
+            <Parameter Name="Where" Mode="In" Type="String" />
+            <Parameter Name="Order" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_TypeFilm_Insert">
+            <Parameter Name="NameT" Mode="In" Type="String" />
+            <Parameter Name="Status" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_TypeFilm_Update">
+            <Parameter Name="TypId" Mode="In" Type="Int32" />
+            <Parameter Name="NameT" Mode="In" Type="String" />
+            <Parameter Name="Status" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_TypeFilm_Update_Status">
+            <Parameter Name="TypId" Mode="In" Type="Int32" />
+            <Parameter Name="Status" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+          <FunctionImport Name="sp_Customer_GetByAlls" EntitySet="Customers" ReturnType="Collection(QLRPCNSModel.Customer)" />
+          <FunctionImport Name="get_KH" EntitySet="Customers" ReturnType="Collection(QLRPCNSModel.Customer)">
+          <Parameter Name="CusId" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="sp_Admin_CheckLogin_Result">
+          <Property Type="Int32" Name="AdmId" Nullable="false" />
+          <Property Type="String" Name="Username" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Pass" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="FullName" Nullable="true" MaxLength="100" />
+          <Property Type="DateTime" Name="Bod" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Address" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="Phone" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="sp_Admin_GetByAll_Result">
+          <Property Type="Int32" Name="AdmId" Nullable="false" />
+          <Property Type="String" Name="Username" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Pass" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="FullName" Nullable="true" MaxLength="100" />
+          <Property Type="DateTime" Name="Bod" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Address" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="Phone" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="sp_Admin_GetById_Result">
+          <Property Type="Int32" Name="AdmId" Nullable="false" />
+          <Property Type="String" Name="Username" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Pass" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="FullName" Nullable="true" MaxLength="100" />
+          <Property Type="DateTime" Name="Bod" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Address" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="Phone" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="sp_Booking_GetByAll_Result">
+          <Property Type="Int32" Name="BooId" Nullable="false" />
+          <Property Type="Int32" Name="CusId" Nullable="true" />
+          <Property Type="Int32" Name="ShoId" Nullable="true" />
+          <Property Type="Int32" Name="Quantity" Nullable="true" />
+          <Property Type="Double" Name="Bilmoney" Nullable="true" />
+          <Property Type="DateTime" Name="DateBooking" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Status" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="CusId1" Nullable="false" />
+          <Property Type="String" Name="Username" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Password" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="CreditCard" Nullable="false" />
+          <Property Type="String" Name="FullName" Nullable="true" MaxLength="100" />
+          <Property Type="DateTime" Name="Bod" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Address" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="Phone" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Avata" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="Status1" Nullable="true" />
+          <Property Type="Int32" Name="BooId1" Nullable="false" />
+          <Property Type="Int32" Name="CusId2" Nullable="true" />
+          <Property Type="Int32" Name="ShoId1" Nullable="true" />
+          <Property Type="Int32" Name="Quantity1" Nullable="true" />
+          <Property Type="Double" Name="Bilmoney1" Nullable="true" />
+          <Property Type="DateTime" Name="DateBooking1" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Status2" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="CusId3" Nullable="false" />
+          <Property Type="String" Name="Username1" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Password1" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="CreditCard1" Nullable="false" />
+          <Property Type="String" Name="FullName1" Nullable="true" MaxLength="100" />
+          <Property Type="DateTime" Name="Bod1" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Address1" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="Phone1" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Email1" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Avata1" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="Status3" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_Booking_GetByCusId_Result">
+          <Property Type="Int32" Name="BooId" Nullable="false" />
+          <Property Type="Int32" Name="CusId" Nullable="true" />
+          <Property Type="Int32" Name="ShoId" Nullable="true" />
+          <Property Type="Int32" Name="Quantity" Nullable="true" />
+          <Property Type="Double" Name="Bilmoney" Nullable="true" />
+          <Property Type="DateTime" Name="DateBooking" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Status" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="sp_Booking_GetById_Result">
+          <Property Type="Int32" Name="BooId" Nullable="false" />
+          <Property Type="Int32" Name="CusId" Nullable="true" />
+          <Property Type="Int32" Name="ShoId" Nullable="true" />
+          <Property Type="Int32" Name="Quantity" Nullable="true" />
+          <Property Type="Double" Name="Bilmoney" Nullable="true" />
+          <Property Type="DateTime" Name="DateBooking" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Status" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="CusId1" Nullable="false" />
+          <Property Type="String" Name="Username" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Password" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="CreditCard" Nullable="false" />
+          <Property Type="String" Name="FullName" Nullable="true" MaxLength="100" />
+          <Property Type="DateTime" Name="Bod" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Address" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="Phone" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Avata" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="Status1" Nullable="true" />
+          <Property Type="Int32" Name="ShoId1" Nullable="false" />
+          <Property Type="Int32" Name="FilId" Nullable="true" />
+          <Property Type="Int32" Name="CinId" Nullable="true" />
+          <Property Type="DateTime" Name="ShowTime" Nullable="false" Precision="23" />
+          <Property Type="Time" Name="Time" Nullable="true" />
+          <Property Type="Int32" Name="View" Nullable="true" />
+          <Property Type="Double" Name="Price" Nullable="false" />
+          <Property Type="Int32" Name="Status2" Nullable="true" />
+          <Property Type="Int32" Name="FilId1" Nullable="false" />
+          <Property Type="Int32" Name="TypId" Nullable="true" />
+          <Property Type="Int32" Name="CouId" Nullable="true" />
+          <Property Type="String" Name="NameF" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Director" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Actor" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="Duration" Nullable="true" />
+          <Property Type="String" Name="Description" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="Detail" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="Picture" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="PictureBig" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="Status3" Nullable="true" />
+          <Property Type="Int32" Name="BooId1" Nullable="false" />
+          <Property Type="Int32" Name="CusId2" Nullable="true" />
+          <Property Type="Int32" Name="ShoId2" Nullable="true" />
+          <Property Type="Int32" Name="Quantity1" Nullable="true" />
+          <Property Type="Double" Name="Bilmoney1" Nullable="true" />
+          <Property Type="DateTime" Name="DateBooking1" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Status4" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="CusId3" Nullable="false" />
+          <Property Type="String" Name="Username1" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Password1" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="CreditCard1" Nullable="false" />
+          <Property Type="String" Name="FullName1" Nullable="true" MaxLength="100" />
+          <Property Type="DateTime" Name="Bod1" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Address1" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="Phone1" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Email1" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Avata1" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="Status5" Nullable="true" />
+          <Property Type="Int32" Name="ShoId3" Nullable="false" />
+          <Property Type="Int32" Name="FilId2" Nullable="true" />
+          <Property Type="Int32" Name="CinId1" Nullable="true" />
+          <Property Type="DateTime" Name="ShowTime1" Nullable="false" Precision="23" />
+          <Property Type="Time" Name="Time1" Nullable="true" />
+          <Property Type="Int32" Name="View1" Nullable="true" />
+          <Property Type="Double" Name="Price1" Nullable="false" />
+          <Property Type="Int32" Name="Status6" Nullable="true" />
+          <Property Type="Int32" Name="FilId3" Nullable="false" />
+          <Property Type="Int32" Name="TypId1" Nullable="true" />
+          <Property Type="Int32" Name="CouId1" Nullable="true" />
+          <Property Type="String" Name="NameF1" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Director1" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Actor1" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="Duration1" Nullable="true" />
+          <Property Type="String" Name="Description1" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="Detail1" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="Picture1" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="PictureBig1" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="Status7" Nullable="true" />
+          <Property Type="String" Name="Pic" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="BooId2" Nullable="false" />
+          <Property Type="Int32" Name="CusId4" Nullable="true" />
+          <Property Type="Int32" Name="ShoId4" Nullable="true" />
+          <Property Type="Int32" Name="Quantity2" Nullable="true" />
+          <Property Type="Double" Name="Bilmoney2" Nullable="true" />
+          <Property Type="DateTime" Name="DateBooking2" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Status8" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="CusId5" Nullable="false" />
+          <Property Type="String" Name="Username2" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Password2" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="CreditCard2" Nullable="false" />
+          <Property Type="String" Name="FullName2" Nullable="true" MaxLength="100" />
+          <Property Type="DateTime" Name="Bod2" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Address2" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="Phone2" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Email2" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Avata2" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="Status9" Nullable="true" />
+          <Property Type="Int32" Name="ShoId5" Nullable="false" />
+          <Property Type="Int32" Name="FilId4" Nullable="true" />
+          <Property Type="Int32" Name="CinId2" Nullable="true" />
+          <Property Type="DateTime" Name="ShowTime2" Nullable="false" Precision="23" />
+          <Property Type="Time" Name="Time2" Nullable="true" />
+          <Property Type="Int32" Name="View2" Nullable="true" />
+          <Property Type="Double" Name="Price2" Nullable="false" />
+          <Property Type="Int32" Name="Status10" Nullable="true" />
+          <Property Type="Int32" Name="FilId5" Nullable="false" />
+          <Property Type="Int32" Name="TypId2" Nullable="true" />
+          <Property Type="Int32" Name="CouId2" Nullable="true" />
+          <Property Type="String" Name="NameF2" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Director2" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Actor2" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="Duration2" Nullable="true" />
+          <Property Type="String" Name="Description2" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="Detail2" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="Picture2" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="PictureBig2" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="Status11" Nullable="true" />
+          <Property Type="String" Name="St" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="sp_Booking_GetByShoId_Result">
+          <Property Type="Int32" Name="BooId" Nullable="false" />
+          <Property Type="Int32" Name="CusId" Nullable="true" />
+          <Property Type="Int32" Name="ShoId" Nullable="true" />
+          <Property Type="Int32" Name="Quantity" Nullable="true" />
+          <Property Type="Double" Name="Bilmoney" Nullable="true" />
+          <Property Type="DateTime" Name="DateBooking" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Status" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="sp_Cinema_GetByAll_Result">
+          <Property Type="Int32" Name="CinId" Nullable="false" />
+          <Property Type="String" Name="NameCi" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Address" Nullable="true" MaxLength="200" />
+          <Property Type="Int32" Name="Seats" Nullable="true" />
+          <Property Type="String" Name="Phone" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Image" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="Status" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_Cinema_GetById_Result">
+          <Property Type="Int32" Name="CinId" Nullable="false" />
+          <Property Type="String" Name="NameCi" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Address" Nullable="true" MaxLength="200" />
+          <Property Type="Int32" Name="Seats" Nullable="true" />
+          <Property Type="String" Name="Phone" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Image" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="Status" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_Country_GetByAll_Result">
+          <Property Type="Int32" Name="CouId" Nullable="false" />
+          <Property Type="String" Name="NameCo" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="Status" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_Country_GetById_Result">
+          <Property Type="Int32" Name="CouId" Nullable="false" />
+          <Property Type="String" Name="NameCo" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="Status" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_Customer_CheckLogin_Result">
+          <Property Type="Int32" Name="CusId" Nullable="false" />
+          <Property Type="String" Name="Username" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Password" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="CreditCard" Nullable="false" />
+          <Property Type="String" Name="FullName" Nullable="true" MaxLength="100" />
+          <Property Type="DateTime" Name="Bod" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Address" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="Phone" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Avata" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="Status" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_Customer_GetByAll_Result">
+          <Property Type="Int32" Name="CusId" Nullable="false" />
+          <Property Type="String" Name="Username" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Password" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="CreditCard" Nullable="false" />
+          <Property Type="String" Name="FullName" Nullable="true" MaxLength="100" />
+          <Property Type="DateTime" Name="Bod" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Address" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="Phone" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Avata" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="Status" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_Customer_GetById_Result">
+          <Property Type="Int32" Name="CusId" Nullable="false" />
+          <Property Type="String" Name="Username" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Password" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="CreditCard" Nullable="false" />
+          <Property Type="String" Name="FullName" Nullable="true" MaxLength="100" />
+          <Property Type="DateTime" Name="Bod" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Address" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="Phone" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Avata" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="Status" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_Feedback_GetByAll_Result">
+          <Property Type="Int32" Name="FeeId" Nullable="false" />
+          <Property Type="Int32" Name="FilId" Nullable="true" />
+          <Property Type="String" Name="Avata" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="FullName" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Comment" Nullable="false" MaxLength="500" />
+          <Property Type="DateTime" Name="Created" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="Status" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_Feedback_GetByFilId_Result">
+          <Property Type="Int32" Name="FeeId" Nullable="false" />
+          <Property Type="Int32" Name="FilId" Nullable="true" />
+          <Property Type="String" Name="Avata" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="FullName" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Comment" Nullable="false" MaxLength="500" />
+          <Property Type="DateTime" Name="Created" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="Status" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_Feedback_GetById_Result">
+          <Property Type="Int32" Name="FeeId" Nullable="false" />
+          <Property Type="Int32" Name="FilId" Nullable="true" />
+          <Property Type="String" Name="Avata" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="FullName" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Comment" Nullable="false" MaxLength="500" />
+          <Property Type="DateTime" Name="Created" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="Status" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_Film_GetByAll_Result">
+          <Property Type="Int32" Name="FilId" Nullable="false" />
+          <Property Type="Int32" Name="TypId" Nullable="true" />
+          <Property Type="Int32" Name="CouId" Nullable="true" />
+          <Property Type="String" Name="NameF" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Director" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Actor" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="Duration" Nullable="true" />
+          <Property Type="String" Name="Description" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="Detail" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="Picture" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="PictureBig" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="Status" Nullable="true" />
+          <Property Type="Int32" Name="CouId1" Nullable="false" />
+          <Property Type="String" Name="NameCo" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="Status1" Nullable="true" />
+          <Property Type="Int32" Name="TypId1" Nullable="false" />
+          <Property Type="String" Name="NameT" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="Status2" Nullable="true" />
+          <Property Type="Int32" Name="FilId1" Nullable="false" />
+          <Property Type="Int32" Name="TypId2" Nullable="true" />
+          <Property Type="Int32" Name="CouId2" Nullable="true" />
+          <Property Type="String" Name="NameF1" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Director1" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Actor1" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="Duration1" Nullable="true" />
+          <Property Type="String" Name="Description1" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="Detail1" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="Picture1" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="PictureBig1" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="Status3" Nullable="true" />
+          <Property Type="Int32" Name="CouId3" Nullable="false" />
+          <Property Type="String" Name="NameCo1" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="Status4" Nullable="true" />
+          <Property Type="Int32" Name="TypId3" Nullable="false" />
+          <Property Type="String" Name="NameT1" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="Status5" Nullable="true" />
+          <Property Type="Int32" Name="FilId2" Nullable="false" />
+          <Property Type="Int32" Name="TypId4" Nullable="true" />
+          <Property Type="Int32" Name="CouId4" Nullable="true" />
+          <Property Type="String" Name="NameF2" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Director2" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Actor2" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="Duration2" Nullable="true" />
+          <Property Type="String" Name="Description2" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="Detail2" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="Picture2" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="PictureBig2" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="Status6" Nullable="true" />
+          <Property Type="Int32" Name="CouId5" Nullable="false" />
+          <Property Type="String" Name="NameCo2" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="Status7" Nullable="true" />
+          <Property Type="Int32" Name="TypId5" Nullable="false" />
+          <Property Type="String" Name="NameT2" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="Status8" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_Film_GetByCouId_Result">
+          <Property Type="Int32" Name="FilId" Nullable="false" />
+          <Property Type="Int32" Name="TypId" Nullable="true" />
+          <Property Type="Int32" Name="CouId" Nullable="true" />
+          <Property Type="String" Name="NameF" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Director" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Actor" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="Duration" Nullable="true" />
+          <Property Type="String" Name="Description" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="Detail" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="Picture" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="PictureBig" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="Status" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_Film_GetById_Result">
+          <Property Type="Int32" Name="FilId" Nullable="false" />
+          <Property Type="Int32" Name="TypId" Nullable="true" />
+          <Property Type="Int32" Name="CouId" Nullable="true" />
+          <Property Type="String" Name="NameF" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Director" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Actor" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="Duration" Nullable="true" />
+          <Property Type="String" Name="Description" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="Detail" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="Picture" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="PictureBig" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="Status" Nullable="true" />
+          <Property Type="Int32" Name="CouId1" Nullable="false" />
+          <Property Type="String" Name="NameCo" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="Status1" Nullable="true" />
+          <Property Type="Int32" Name="TypId1" Nullable="false" />
+          <Property Type="String" Name="NameT" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="Status2" Nullable="true" />
+          <Property Type="Int32" Name="FilId1" Nullable="false" />
+          <Property Type="Int32" Name="TypId2" Nullable="true" />
+          <Property Type="Int32" Name="CouId2" Nullable="true" />
+          <Property Type="String" Name="NameF1" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Director1" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Actor1" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="Duration1" Nullable="true" />
+          <Property Type="String" Name="Description1" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="Detail1" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="Picture1" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="PictureBig1" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="Status3" Nullable="true" />
+          <Property Type="Int32" Name="CouId3" Nullable="false" />
+          <Property Type="String" Name="NameCo1" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="Status4" Nullable="true" />
+          <Property Type="Int32" Name="TypId3" Nullable="false" />
+          <Property Type="String" Name="NameT1" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="Status5" Nullable="true" />
+          <Property Type="Int32" Name="FilId2" Nullable="false" />
+          <Property Type="Int32" Name="TypId4" Nullable="true" />
+          <Property Type="Int32" Name="CouId4" Nullable="true" />
+          <Property Type="String" Name="NameF2" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Director2" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Actor2" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="Duration2" Nullable="true" />
+          <Property Type="String" Name="Description2" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="Detail2" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="Picture2" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="PictureBig2" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="Status6" Nullable="true" />
+          <Property Type="Int32" Name="CouId5" Nullable="false" />
+          <Property Type="String" Name="NameCo2" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="Status7" Nullable="true" />
+          <Property Type="Int32" Name="TypId5" Nullable="false" />
+          <Property Type="String" Name="NameT2" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="Status8" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_Film_GetByTypId_Result">
+          <Property Type="Int32" Name="FilId" Nullable="false" />
+          <Property Type="Int32" Name="TypId" Nullable="true" />
+          <Property Type="Int32" Name="CouId" Nullable="true" />
+          <Property Type="String" Name="NameF" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Director" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Actor" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="Duration" Nullable="true" />
+          <Property Type="String" Name="Description" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="Detail" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="Picture" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="PictureBig" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="Status" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="sp_ShowTimes_GetByAll_Result">
+          <Property Type="Int32" Name="ShoId" Nullable="false" />
+          <Property Type="Int32" Name="FilId" Nullable="true" />
+          <Property Type="Int32" Name="CinId" Nullable="true" />
+          <Property Type="DateTime" Name="ShowTime" Nullable="false" Precision="23" />
+          <Property Type="Time" Name="Time" Nullable="true" />
+          <Property Type="Int32" Name="View" Nullable="true" />
+          <Property Type="Double" Name="Price" Nullable="false" />
+          <Property Type="Int32" Name="Status" Nullable="true" />
+          <Property Type="Int32" Name="FilId1" Nullable="false" />
+          <Property Type="Int32" Name="TypId" Nullable="true" />
+          <Property Type="Int32" Name="CouId" Nullable="true" />
+          <Property Type="String" Name="NameF" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Director" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Actor" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="Duration" Nullable="true" />
+          <Property Type="String" Name="Description" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="Detail" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="Picture" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="PictureBig" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="Status1" Nullable="true" />
+          <Property Type="Int32" Name="CinId1" Nullable="false" />
+          <Property Type="String" Name="NameCi" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Address" Nullable="true" MaxLength="200" />
+          <Property Type="Int32" Name="Seats" Nullable="true" />
+          <Property Type="String" Name="Phone" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Image" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="Status2" Nullable="true" />
+          <Property Type="Int32" Name="ShoId1" Nullable="false" />
+          <Property Type="Int32" Name="FilId2" Nullable="true" />
+          <Property Type="Int32" Name="CinId2" Nullable="true" />
+          <Property Type="DateTime" Name="ShowTime1" Nullable="false" Precision="23" />
+          <Property Type="Time" Name="Time1" Nullable="true" />
+          <Property Type="Int32" Name="View1" Nullable="true" />
+          <Property Type="Double" Name="Price1" Nullable="false" />
+          <Property Type="Int32" Name="Status3" Nullable="true" />
+          <Property Type="Int32" Name="FilId3" Nullable="false" />
+          <Property Type="Int32" Name="TypId1" Nullable="true" />
+          <Property Type="Int32" Name="CouId1" Nullable="true" />
+          <Property Type="String" Name="NameF1" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Director1" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Actor1" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="Duration1" Nullable="true" />
+          <Property Type="String" Name="Description1" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="Detail1" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="Picture1" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="PictureBig1" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="Status4" Nullable="true" />
+          <Property Type="Int32" Name="CinId3" Nullable="false" />
+          <Property Type="String" Name="NameCi1" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Address1" Nullable="true" MaxLength="200" />
+          <Property Type="Int32" Name="Seats1" Nullable="true" />
+          <Property Type="String" Name="Phone1" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Image1" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="Status5" Nullable="true" />
+          <Property Type="Int32" Name="ShoId2" Nullable="false" />
+          <Property Type="Int32" Name="FilId4" Nullable="true" />
+          <Property Type="Int32" Name="CinId4" Nullable="true" />
+          <Property Type="DateTime" Name="ShowTime2" Nullable="false" Precision="23" />
+          <Property Type="Time" Name="Time2" Nullable="true" />
+          <Property Type="Int32" Name="View2" Nullable="true" />
+          <Property Type="Double" Name="Price2" Nullable="false" />
+          <Property Type="Int32" Name="Status6" Nullable="true" />
+          <Property Type="Int32" Name="FilId5" Nullable="false" />
+          <Property Type="Int32" Name="TypId2" Nullable="true" />
+          <Property Type="Int32" Name="CouId2" Nullable="true" />
+          <Property Type="String" Name="NameF2" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Director2" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Actor2" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="Duration2" Nullable="true" />
+          <Property Type="String" Name="Description2" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="Detail2" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="Picture2" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="PictureBig2" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="Status7" Nullable="true" />
+          <Property Type="Int32" Name="CinId5" Nullable="false" />
+          <Property Type="String" Name="NameCi2" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Address2" Nullable="true" MaxLength="200" />
+          <Property Type="Int32" Name="Seats2" Nullable="true" />
+          <Property Type="String" Name="Phone2" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Image2" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="Status8" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_ShowTimes_GetByCinId_Result">
+          <Property Type="Int32" Name="ShoId" Nullable="false" />
+          <Property Type="Int32" Name="FilId" Nullable="true" />
+          <Property Type="Int32" Name="CinId" Nullable="true" />
+          <Property Type="DateTime" Name="ShowTime" Nullable="false" Precision="23" />
+          <Property Type="Time" Name="Time" Nullable="true" />
+          <Property Type="Int32" Name="View" Nullable="true" />
+          <Property Type="Double" Name="Price" Nullable="false" />
+          <Property Type="Int32" Name="Status" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_ShowTimes_GetByFilId_Result">
+          <Property Type="Int32" Name="ShoId" Nullable="false" />
+          <Property Type="Int32" Name="FilId" Nullable="true" />
+          <Property Type="Int32" Name="CinId" Nullable="true" />
+          <Property Type="DateTime" Name="ShowTime" Nullable="false" Precision="23" />
+          <Property Type="Time" Name="Time" Nullable="true" />
+          <Property Type="Int32" Name="View" Nullable="true" />
+          <Property Type="Double" Name="Price" Nullable="false" />
+          <Property Type="Int32" Name="Status" Nullable="true" />
+          <Property Type="Int32" Name="CinId1" Nullable="false" />
+          <Property Type="String" Name="NameCi" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Address" Nullable="true" MaxLength="200" />
+          <Property Type="Int32" Name="Seats" Nullable="true" />
+          <Property Type="String" Name="Phone" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Image" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="Status1" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_ShowTimes_GetById_Result">
+          <Property Type="Int32" Name="ShoId" Nullable="false" />
+          <Property Type="Int32" Name="FilId" Nullable="true" />
+          <Property Type="Int32" Name="CinId" Nullable="true" />
+          <Property Type="DateTime" Name="ShowTime" Nullable="false" Precision="23" />
+          <Property Type="Time" Name="Time" Nullable="true" />
+          <Property Type="Int32" Name="View" Nullable="true" />
+          <Property Type="Double" Name="Price" Nullable="false" />
+          <Property Type="Int32" Name="Status" Nullable="true" />
+          <Property Type="Int32" Name="FilId1" Nullable="false" />
+          <Property Type="Int32" Name="TypId" Nullable="true" />
+          <Property Type="Int32" Name="CouId" Nullable="true" />
+          <Property Type="String" Name="NameF" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Director" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Actor" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="Duration" Nullable="true" />
+          <Property Type="String" Name="Description" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="Detail" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="Picture" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="PictureBig" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="Status1" Nullable="true" />
+          <Property Type="Int32" Name="CinId1" Nullable="false" />
+          <Property Type="String" Name="NameCi" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Address" Nullable="true" MaxLength="200" />
+          <Property Type="Int32" Name="Seats" Nullable="true" />
+          <Property Type="String" Name="Phone" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Image" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="Status2" Nullable="true" />
+          <Property Type="Int32" Name="ShoId1" Nullable="false" />
+          <Property Type="Int32" Name="FilId2" Nullable="true" />
+          <Property Type="Int32" Name="CinId2" Nullable="true" />
+          <Property Type="DateTime" Name="ShowTime1" Nullable="false" Precision="23" />
+          <Property Type="Time" Name="Time1" Nullable="true" />
+          <Property Type="Int32" Name="View1" Nullable="true" />
+          <Property Type="Double" Name="Price1" Nullable="false" />
+          <Property Type="Int32" Name="Status3" Nullable="true" />
+          <Property Type="Int32" Name="FilId3" Nullable="false" />
+          <Property Type="Int32" Name="TypId1" Nullable="true" />
+          <Property Type="Int32" Name="CouId1" Nullable="true" />
+          <Property Type="String" Name="NameF1" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Director1" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Actor1" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="Duration1" Nullable="true" />
+          <Property Type="String" Name="Description1" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="Detail1" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="Picture1" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="PictureBig1" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="Status4" Nullable="true" />
+          <Property Type="Int32" Name="CinId3" Nullable="false" />
+          <Property Type="String" Name="NameCi1" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Address1" Nullable="true" MaxLength="200" />
+          <Property Type="Int32" Name="Seats1" Nullable="true" />
+          <Property Type="String" Name="Phone1" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Image1" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="Status5" Nullable="true" />
+          <Property Type="Int32" Name="ShoId2" Nullable="false" />
+          <Property Type="Int32" Name="FilId4" Nullable="true" />
+          <Property Type="Int32" Name="CinId4" Nullable="true" />
+          <Property Type="DateTime" Name="ShowTime2" Nullable="false" Precision="23" />
+          <Property Type="Time" Name="Time2" Nullable="true" />
+          <Property Type="Int32" Name="View2" Nullable="true" />
+          <Property Type="Double" Name="Price2" Nullable="false" />
+          <Property Type="Int32" Name="Status6" Nullable="true" />
+          <Property Type="Int32" Name="FilId5" Nullable="false" />
+          <Property Type="Int32" Name="TypId2" Nullable="true" />
+          <Property Type="Int32" Name="CouId2" Nullable="true" />
+          <Property Type="String" Name="NameF2" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Director2" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Actor2" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="Duration2" Nullable="true" />
+          <Property Type="String" Name="Description2" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="Detail2" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="Picture2" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="PictureBig2" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="Status7" Nullable="true" />
+          <Property Type="Int32" Name="CinId5" Nullable="false" />
+          <Property Type="String" Name="NameCi2" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Address2" Nullable="true" MaxLength="200" />
+          <Property Type="Int32" Name="Seats2" Nullable="true" />
+          <Property Type="String" Name="Phone2" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Image2" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="Status8" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_TypeFilm_GetByAll_Result">
+          <Property Type="Int32" Name="TypId" Nullable="false" />
+          <Property Type="String" Name="NameT" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="Status" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_TypeFilm_GetById_Result">
+          <Property Type="Int32" Name="TypId" Nullable="false" />
+          <Property Type="String" Name="NameT" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="Status" Nullable="true" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="QLRPCNSModelStoreContainer" CdmEntityContainer="QLRPCNSEntities">
+          <EntitySetMapping Name="Admins">
+            <EntityTypeMapping TypeName="QLRPCNSModel.Admin">
+              <MappingFragment StoreEntitySet="Admin">
+                <ScalarProperty Name="AdmId" ColumnName="AdmId" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Pass" ColumnName="Pass" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Bod" ColumnName="Bod" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Bookings">
+            <EntityTypeMapping TypeName="QLRPCNSModel.Booking">
+              <MappingFragment StoreEntitySet="Booking">
+                <ScalarProperty Name="BooId" ColumnName="BooId" />
+                <ScalarProperty Name="CusId" ColumnName="CusId" />
+                <ScalarProperty Name="ShoId" ColumnName="ShoId" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Bilmoney" ColumnName="Bilmoney" />
+                <ScalarProperty Name="DateBooking" ColumnName="DateBooking" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cinemas">
+            <EntityTypeMapping TypeName="QLRPCNSModel.Cinema">
+              <MappingFragment StoreEntitySet="Cinema">
+                <ScalarProperty Name="CinId" ColumnName="CinId" />
+                <ScalarProperty Name="NameCi" ColumnName="NameCi" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Seats" ColumnName="Seats" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Countries">
+            <EntityTypeMapping TypeName="QLRPCNSModel.Country">
+              <MappingFragment StoreEntitySet="Country">
+                <ScalarProperty Name="CouId" ColumnName="CouId" />
+                <ScalarProperty Name="NameCo" ColumnName="NameCo" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="QLRPCNSModel.Customer">
+              <MappingFragment StoreEntitySet="Customer">
+                <ScalarProperty Name="CusId" ColumnName="CusId" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="CreditCard" ColumnName="CreditCard" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Bod" ColumnName="Bod" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Avata" ColumnName="Avata" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Feedbacks">
+            <EntityTypeMapping TypeName="QLRPCNSModel.Feedback">
+              <MappingFragment StoreEntitySet="Feedback">
+                <ScalarProperty Name="FeeId" ColumnName="FeeId" />
+                <ScalarProperty Name="FilId" ColumnName="FilId" />
+                <ScalarProperty Name="Avata" ColumnName="Avata" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Films">
+            <EntityTypeMapping TypeName="QLRPCNSModel.Film">
+              <MappingFragment StoreEntitySet="Film">
+                <ScalarProperty Name="FilId" ColumnName="FilId" />
+                <ScalarProperty Name="TypId" ColumnName="TypId" />
+                <ScalarProperty Name="CouId" ColumnName="CouId" />
+                <ScalarProperty Name="NameF" ColumnName="NameF" />
+                <ScalarProperty Name="Director" ColumnName="Director" />
+                <ScalarProperty Name="Actor" ColumnName="Actor" />
+                <ScalarProperty Name="Duration" ColumnName="Duration" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Detail" ColumnName="Detail" />
+                <ScalarProperty Name="Picture" ColumnName="Picture" />
+                <ScalarProperty Name="PictureBig" ColumnName="PictureBig" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ShowTimes">
+            <EntityTypeMapping TypeName="QLRPCNSModel.ShowTime">
+              <MappingFragment StoreEntitySet="ShowTimes">
+                <ScalarProperty Name="ShoId" ColumnName="ShoId" />
+                <ScalarProperty Name="FilId" ColumnName="FilId" />
+                <ScalarProperty Name="CinId" ColumnName="CinId" />
+                <ScalarProperty Name="ShowTime1" ColumnName="ShowTime" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="View" ColumnName="View" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="QLRPCNSModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TypeFilms">
+            <EntityTypeMapping TypeName="QLRPCNSModel.TypeFilm">
+              <MappingFragment StoreEntitySet="TypeFilm">
+                <ScalarProperty Name="TypId" ColumnName="TypId" />
+                <ScalarProperty Name="NameT" ColumnName="NameT" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_Admin_ChangePass" FunctionName="QLRPCNSModel.Store.sp_Admin_ChangePass" />
+          <FunctionImportMapping FunctionImportName="sp_Admin_CheckLogin" FunctionName="QLRPCNSModel.Store.sp_Admin_CheckLogin">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QLRPCNSModel.sp_Admin_CheckLogin_Result">
+                <ScalarProperty Name="AdmId" ColumnName="AdmId" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Pass" ColumnName="Pass" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Bod" ColumnName="Bod" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_Admin_GetByAll" FunctionName="QLRPCNSModel.Store.sp_Admin_GetByAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QLRPCNSModel.sp_Admin_GetByAll_Result">
+                <ScalarProperty Name="AdmId" ColumnName="AdmId" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Pass" ColumnName="Pass" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Bod" ColumnName="Bod" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_Admin_GetById" FunctionName="QLRPCNSModel.Store.sp_Admin_GetById">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QLRPCNSModel.sp_Admin_GetById_Result">
+                <ScalarProperty Name="AdmId" ColumnName="AdmId" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Pass" ColumnName="Pass" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Bod" ColumnName="Bod" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_Admin_Update" FunctionName="QLRPCNSModel.Store.sp_Admin_Update" />
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="QLRPCNSModel.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_Booking_Delete" FunctionName="QLRPCNSModel.Store.sp_Booking_Delete" />
+          <FunctionImportMapping FunctionImportName="sp_Booking_GetByAll" FunctionName="QLRPCNSModel.Store.sp_Booking_GetByAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QLRPCNSModel.sp_Booking_GetByAll_Result">
+                <ScalarProperty Name="BooId" ColumnName="BooId" />
+                <ScalarProperty Name="CusId" ColumnName="CusId" />
+                <ScalarProperty Name="ShoId" ColumnName="ShoId" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Bilmoney" ColumnName="Bilmoney" />
+                <ScalarProperty Name="DateBooking" ColumnName="DateBooking" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="CusId1" ColumnName="CusId1" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="CreditCard" ColumnName="CreditCard" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Bod" ColumnName="Bod" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Avata" ColumnName="Avata" />
+                <ScalarProperty Name="Status1" ColumnName="Status1" />
+                <ScalarProperty Name="BooId1" ColumnName="BooId1" />
+                <ScalarProperty Name="CusId2" ColumnName="CusId2" />
+                <ScalarProperty Name="ShoId1" ColumnName="ShoId1" />
+                <ScalarProperty Name="Quantity1" ColumnName="Quantity1" />
+                <ScalarProperty Name="Bilmoney1" ColumnName="Bilmoney1" />
+                <ScalarProperty Name="DateBooking1" ColumnName="DateBooking1" />
+                <ScalarProperty Name="Status2" ColumnName="Status2" />
+                <ScalarProperty Name="CusId3" ColumnName="CusId3" />
+                <ScalarProperty Name="Username1" ColumnName="Username1" />
+                <ScalarProperty Name="Password1" ColumnName="Password1" />
+                <ScalarProperty Name="CreditCard1" ColumnName="CreditCard1" />
+                <ScalarProperty Name="FullName1" ColumnName="FullName1" />
+                <ScalarProperty Name="Bod1" ColumnName="Bod1" />
+                <ScalarProperty Name="Address1" ColumnName="Address1" />
+                <ScalarProperty Name="Phone1" ColumnName="Phone1" />
+                <ScalarProperty Name="Email1" ColumnName="Email1" />
+                <ScalarProperty Name="Avata1" ColumnName="Avata1" />
+                <ScalarProperty Name="Status3" ColumnName="Status3" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_Booking_GetByCusId" FunctionName="QLRPCNSModel.Store.sp_Booking_GetByCusId">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QLRPCNSModel.sp_Booking_GetByCusId_Result">
+                <ScalarProperty Name="BooId" ColumnName="BooId" />
+                <ScalarProperty Name="CusId" ColumnName="CusId" />
+                <ScalarProperty Name="ShoId" ColumnName="ShoId" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Bilmoney" ColumnName="Bilmoney" />
+                <ScalarProperty Name="DateBooking" ColumnName="DateBooking" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_Booking_GetById" FunctionName="QLRPCNSModel.Store.sp_Booking_GetById">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QLRPCNSModel.sp_Booking_GetById_Result">
+                <ScalarProperty Name="BooId" ColumnName="BooId" />
+                <ScalarProperty Name="CusId" ColumnName="CusId" />
+                <ScalarProperty Name="ShoId" ColumnName="ShoId" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Bilmoney" ColumnName="Bilmoney" />
+                <ScalarProperty Name="DateBooking" ColumnName="DateBooking" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="CusId1" ColumnName="CusId1" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="CreditCard" ColumnName="CreditCard" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Bod" ColumnName="Bod" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Avata" ColumnName="Avata" />
+                <ScalarProperty Name="Status1" ColumnName="Status1" />
+                <ScalarProperty Name="ShoId1" ColumnName="ShoId1" />
+                <ScalarProperty Name="FilId" ColumnName="FilId" />
+                <ScalarProperty Name="CinId" ColumnName="CinId" />
+                <ScalarProperty Name="ShowTime" ColumnName="ShowTime" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="View" ColumnName="View" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Status2" ColumnName="Status2" />
+                <ScalarProperty Name="FilId1" ColumnName="FilId1" />
+                <ScalarProperty Name="TypId" ColumnName="TypId" />
+                <ScalarProperty Name="CouId" ColumnName="CouId" />
+                <ScalarProperty Name="NameF" ColumnName="NameF" />
+                <ScalarProperty Name="Director" ColumnName="Director" />
+                <ScalarProperty Name="Actor" ColumnName="Actor" />
+                <ScalarProperty Name="Duration" ColumnName="Duration" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Detail" ColumnName="Detail" />
+                <ScalarProperty Name="Picture" ColumnName="Picture" />
+                <ScalarProperty Name="PictureBig" ColumnName="PictureBig" />
+                <ScalarProperty Name="Status3" ColumnName="Status3" />
+                <ScalarProperty Name="BooId1" ColumnName="BooId1" />
+                <ScalarProperty Name="CusId2" ColumnName="CusId2" />
+                <ScalarProperty Name="ShoId2" ColumnName="ShoId2" />
+                <ScalarProperty Name="Quantity1" ColumnName="Quantity1" />
+                <ScalarProperty Name="Bilmoney1" ColumnName="Bilmoney1" />
+                <ScalarProperty Name="DateBooking1" ColumnName="DateBooking1" />
+                <ScalarProperty Name="Status4" ColumnName="Status4" />
+                <ScalarProperty Name="CusId3" ColumnName="CusId3" />
+                <ScalarProperty Name="Username1" ColumnName="Username1" />
+                <ScalarProperty Name="Password1" ColumnName="Password1" />
+                <ScalarProperty Name="CreditCard1" ColumnName="CreditCard1" />
+                <ScalarProperty Name="FullName1" ColumnName="FullName1" />
+                <ScalarProperty Name="Bod1" ColumnName="Bod1" />
+                <ScalarProperty Name="Address1" ColumnName="Address1" />
+                <ScalarProperty Name="Phone1" ColumnName="Phone1" />
+                <ScalarProperty Name="Email1" ColumnName="Email1" />
+                <ScalarProperty Name="Avata1" ColumnName="Avata1" />
+                <ScalarProperty Name="Status5" ColumnName="Status5" />
+                <ScalarProperty Name="ShoId3" ColumnName="ShoId3" />
+                <ScalarProperty Name="FilId2" ColumnName="FilId2" />
+                <ScalarProperty Name="CinId1" ColumnName="CinId1" />
+                <ScalarProperty Name="ShowTime1" ColumnName="ShowTime1" />
+                <ScalarProperty Name="Time1" ColumnName="Time1" />
+                <ScalarProperty Name="View1" ColumnName="View1" />
+                <ScalarProperty Name="Price1" ColumnName="Price1" />
+                <ScalarProperty Name="Status6" ColumnName="Status6" />
+                <ScalarProperty Name="FilId3" ColumnName="FilId3" />
+                <ScalarProperty Name="TypId1" ColumnName="TypId1" />
+                <ScalarProperty Name="CouId1" ColumnName="CouId1" />
+                <ScalarProperty Name="NameF1" ColumnName="NameF1" />
+                <ScalarProperty Name="Director1" ColumnName="Director1" />
+                <ScalarProperty Name="Actor1" ColumnName="Actor1" />
+                <ScalarProperty Name="Duration1" ColumnName="Duration1" />
+                <ScalarProperty Name="Description1" ColumnName="Description1" />
+                <ScalarProperty Name="Detail1" ColumnName="Detail1" />
+                <ScalarProperty Name="Picture1" ColumnName="Picture1" />
+                <ScalarProperty Name="PictureBig1" ColumnName="PictureBig1" />
+                <ScalarProperty Name="Status7" ColumnName="Status7" />
+                <ScalarProperty Name="Pic" ColumnName="Pic" />
+                <ScalarProperty Name="BooId2" ColumnName="BooId2" />
+                <ScalarProperty Name="CusId4" ColumnName="CusId4" />
+                <ScalarProperty Name="ShoId4" ColumnName="ShoId4" />
+                <ScalarProperty Name="Quantity2" ColumnName="Quantity2" />
+                <ScalarProperty Name="Bilmoney2" ColumnName="Bilmoney2" />
+                <ScalarProperty Name="DateBooking2" ColumnName="DateBooking2" />
+                <ScalarProperty Name="Status8" ColumnName="Status8" />
+                <ScalarProperty Name="CusId5" ColumnName="CusId5" />
+                <ScalarProperty Name="Username2" ColumnName="Username2" />
+                <ScalarProperty Name="Password2" ColumnName="Password2" />
+                <ScalarProperty Name="CreditCard2" ColumnName="CreditCard2" />
+                <ScalarProperty Name="FullName2" ColumnName="FullName2" />
+                <ScalarProperty Name="Bod2" ColumnName="Bod2" />
+                <ScalarProperty Name="Address2" ColumnName="Address2" />
+                <ScalarProperty Name="Phone2" ColumnName="Phone2" />
+                <ScalarProperty Name="Email2" ColumnName="Email2" />
+                <ScalarProperty Name="Avata2" ColumnName="Avata2" />
+                <ScalarProperty Name="Status9" ColumnName="Status9" />
+                <ScalarProperty Name="ShoId5" ColumnName="ShoId5" />
+                <ScalarProperty Name="FilId4" ColumnName="FilId4" />
+                <ScalarProperty Name="CinId2" ColumnName="CinId2" />
+                <ScalarProperty Name="ShowTime2" ColumnName="ShowTime2" />
+                <ScalarProperty Name="Time2" ColumnName="Time2" />
+                <ScalarProperty Name="View2" ColumnName="View2" />
+                <ScalarProperty Name="Price2" ColumnName="Price2" />
+                <ScalarProperty Name="Status10" ColumnName="Status10" />
+                <ScalarProperty Name="FilId5" ColumnName="FilId5" />
+                <ScalarProperty Name="TypId2" ColumnName="TypId2" />
+                <ScalarProperty Name="CouId2" ColumnName="CouId2" />
+                <ScalarProperty Name="NameF2" ColumnName="NameF2" />
+                <ScalarProperty Name="Director2" ColumnName="Director2" />
+                <ScalarProperty Name="Actor2" ColumnName="Actor2" />
+                <ScalarProperty Name="Duration2" ColumnName="Duration2" />
+                <ScalarProperty Name="Description2" ColumnName="Description2" />
+                <ScalarProperty Name="Detail2" ColumnName="Detail2" />
+                <ScalarProperty Name="Picture2" ColumnName="Picture2" />
+                <ScalarProperty Name="PictureBig2" ColumnName="PictureBig2" />
+                <ScalarProperty Name="Status11" ColumnName="Status11" />
+                <ScalarProperty Name="St" ColumnName="St" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_Booking_GetByShoId" FunctionName="QLRPCNSModel.Store.sp_Booking_GetByShoId">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QLRPCNSModel.sp_Booking_GetByShoId_Result">
+                <ScalarProperty Name="BooId" ColumnName="BooId" />
+                <ScalarProperty Name="CusId" ColumnName="CusId" />
+                <ScalarProperty Name="ShoId" ColumnName="ShoId" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Bilmoney" ColumnName="Bilmoney" />
+                <ScalarProperty Name="DateBooking" ColumnName="DateBooking" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_Booking_GetByTop" FunctionName="QLRPCNSModel.Store.sp_Booking_GetByTop" />
+          <FunctionImportMapping FunctionImportName="sp_Booking_Insert" FunctionName="QLRPCNSModel.Store.sp_Booking_Insert" />
+          <FunctionImportMapping FunctionImportName="sp_Booking_Sum" FunctionName="QLRPCNSModel.Store.sp_Booking_Sum" />
+          <FunctionImportMapping FunctionImportName="sp_Booking_Update" FunctionName="QLRPCNSModel.Store.sp_Booking_Update" />
+          <FunctionImportMapping FunctionImportName="sp_Cinema_Delete" FunctionName="QLRPCNSModel.Store.sp_Cinema_Delete" />
+          <FunctionImportMapping FunctionImportName="sp_Cinema_GetByAll" FunctionName="QLRPCNSModel.Store.sp_Cinema_GetByAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QLRPCNSModel.sp_Cinema_GetByAll_Result">
+                <ScalarProperty Name="CinId" ColumnName="CinId" />
+                <ScalarProperty Name="NameCi" ColumnName="NameCi" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Seats" ColumnName="Seats" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_Cinema_GetById" FunctionName="QLRPCNSModel.Store.sp_Cinema_GetById">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QLRPCNSModel.sp_Cinema_GetById_Result">
+                <ScalarProperty Name="CinId" ColumnName="CinId" />
+                <ScalarProperty Name="NameCi" ColumnName="NameCi" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Seats" ColumnName="Seats" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_Cinema_GetByTop" FunctionName="QLRPCNSModel.Store.sp_Cinema_GetByTop" />
+          <FunctionImportMapping FunctionImportName="sp_Cinema_Insert" FunctionName="QLRPCNSModel.Store.sp_Cinema_Insert" />
+          <FunctionImportMapping FunctionImportName="sp_Cinema_Update" FunctionName="QLRPCNSModel.Store.sp_Cinema_Update" />
+          <FunctionImportMapping FunctionImportName="sp_Cinema_Update_Status" FunctionName="QLRPCNSModel.Store.sp_Cinema_Update_Status" />
+          <FunctionImportMapping FunctionImportName="sp_Country_Delete" FunctionName="QLRPCNSModel.Store.sp_Country_Delete" />
+          <FunctionImportMapping FunctionImportName="sp_Country_GetByAll" FunctionName="QLRPCNSModel.Store.sp_Country_GetByAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QLRPCNSModel.sp_Country_GetByAll_Result">
+                <ScalarProperty Name="CouId" ColumnName="CouId" />
+                <ScalarProperty Name="NameCo" ColumnName="NameCo" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_Country_GetById" FunctionName="QLRPCNSModel.Store.sp_Country_GetById">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QLRPCNSModel.sp_Country_GetById_Result">
+                <ScalarProperty Name="CouId" ColumnName="CouId" />
+                <ScalarProperty Name="NameCo" ColumnName="NameCo" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_Country_GetByTop" FunctionName="QLRPCNSModel.Store.sp_Country_GetByTop" />
+          <FunctionImportMapping FunctionImportName="sp_Country_Insert" FunctionName="QLRPCNSModel.Store.sp_Country_Insert" />
+          <FunctionImportMapping FunctionImportName="sp_Country_Update" FunctionName="QLRPCNSModel.Store.sp_Country_Update" />
+          <FunctionImportMapping FunctionImportName="sp_Country_Update_Status" FunctionName="QLRPCNSModel.Store.sp_Country_Update_Status" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="QLRPCNSModel.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_Customer_ChangePass" FunctionName="QLRPCNSModel.Store.sp_Customer_ChangePass" />
+          <FunctionImportMapping FunctionImportName="sp_Customer_CheckLogin" FunctionName="QLRPCNSModel.Store.sp_Customer_CheckLogin">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QLRPCNSModel.sp_Customer_CheckLogin_Result">
+                <ScalarProperty Name="CusId" ColumnName="CusId" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="CreditCard" ColumnName="CreditCard" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Bod" ColumnName="Bod" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Avata" ColumnName="Avata" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_Customer_Delete" FunctionName="QLRPCNSModel.Store.sp_Customer_Delete" />
+          <FunctionImportMapping FunctionImportName="sp_Customer_GetByAll" FunctionName="QLRPCNSModel.Store.sp_Customer_GetByAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QLRPCNSModel.sp_Customer_GetByAll_Result">
+                <ScalarProperty Name="CusId" ColumnName="CusId" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="CreditCard" ColumnName="CreditCard" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Bod" ColumnName="Bod" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Avata" ColumnName="Avata" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_Customer_GetById" FunctionName="QLRPCNSModel.Store.sp_Customer_GetById">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QLRPCNSModel.sp_Customer_GetById_Result">
+                <ScalarProperty Name="CusId" ColumnName="CusId" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="CreditCard" ColumnName="CreditCard" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Bod" ColumnName="Bod" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Avata" ColumnName="Avata" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_Customer_GetByTop" FunctionName="QLRPCNSModel.Store.sp_Customer_GetByTop" />
+          <FunctionImportMapping FunctionImportName="sp_Customer_Insert" FunctionName="QLRPCNSModel.Store.sp_Customer_Insert" />
+          <FunctionImportMapping FunctionImportName="sp_Customer_Update" FunctionName="QLRPCNSModel.Store.sp_Customer_Update" />
+          <FunctionImportMapping FunctionImportName="sp_Customer_Update_Status" FunctionName="QLRPCNSModel.Store.sp_Customer_Update_Status" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="QLRPCNSModel.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_Feedback_Delete" FunctionName="QLRPCNSModel.Store.sp_Feedback_Delete" />
+          <FunctionImportMapping FunctionImportName="sp_Feedback_GetByAll" FunctionName="QLRPCNSModel.Store.sp_Feedback_GetByAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QLRPCNSModel.sp_Feedback_GetByAll_Result">
+                <ScalarProperty Name="FeeId" ColumnName="FeeId" />
+                <ScalarProperty Name="FilId" ColumnName="FilId" />
+                <ScalarProperty Name="Avata" ColumnName="Avata" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_Feedback_GetByFilId" FunctionName="QLRPCNSModel.Store.sp_Feedback_GetByFilId">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QLRPCNSModel.sp_Feedback_GetByFilId_Result">
+                <ScalarProperty Name="FeeId" ColumnName="FeeId" />
+                <ScalarProperty Name="FilId" ColumnName="FilId" />
+                <ScalarProperty Name="Avata" ColumnName="Avata" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_Feedback_GetById" FunctionName="QLRPCNSModel.Store.sp_Feedback_GetById">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QLRPCNSModel.sp_Feedback_GetById_Result">
+                <ScalarProperty Name="FeeId" ColumnName="FeeId" />
+                <ScalarProperty Name="FilId" ColumnName="FilId" />
+                <ScalarProperty Name="Avata" ColumnName="Avata" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_Feedback_GetByTop" FunctionName="QLRPCNSModel.Store.sp_Feedback_GetByTop" />
+          <FunctionImportMapping FunctionImportName="sp_Feedback_Insert" FunctionName="QLRPCNSModel.Store.sp_Feedback_Insert" />
+          <FunctionImportMapping FunctionImportName="sp_Feedback_Update" FunctionName="QLRPCNSModel.Store.sp_Feedback_Update" />
+          <FunctionImportMapping FunctionImportName="sp_Film_Delete" FunctionName="QLRPCNSModel.Store.sp_Film_Delete" />
+          <FunctionImportMapping FunctionImportName="sp_Film_GetByAll" FunctionName="QLRPCNSModel.Store.sp_Film_GetByAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QLRPCNSModel.sp_Film_GetByAll_Result">
+                <ScalarProperty Name="FilId" ColumnName="FilId" />
+                <ScalarProperty Name="TypId" ColumnName="TypId" />
+                <ScalarProperty Name="CouId" ColumnName="CouId" />
+                <ScalarProperty Name="NameF" ColumnName="NameF" />
+                <ScalarProperty Name="Director" ColumnName="Director" />
+                <ScalarProperty Name="Actor" ColumnName="Actor" />
+                <ScalarProperty Name="Duration" ColumnName="Duration" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Detail" ColumnName="Detail" />
+                <ScalarProperty Name="Picture" ColumnName="Picture" />
+                <ScalarProperty Name="PictureBig" ColumnName="PictureBig" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="CouId1" ColumnName="CouId1" />
+                <ScalarProperty Name="NameCo" ColumnName="NameCo" />
+                <ScalarProperty Name="Status1" ColumnName="Status1" />
+                <ScalarProperty Name="TypId1" ColumnName="TypId1" />
+                <ScalarProperty Name="NameT" ColumnName="NameT" />
+                <ScalarProperty Name="Status2" ColumnName="Status2" />
+                <ScalarProperty Name="FilId1" ColumnName="FilId1" />
+                <ScalarProperty Name="TypId2" ColumnName="TypId2" />
+                <ScalarProperty Name="CouId2" ColumnName="CouId2" />
+                <ScalarProperty Name="NameF1" ColumnName="NameF1" />
+                <ScalarProperty Name="Director1" ColumnName="Director1" />
+                <ScalarProperty Name="Actor1" ColumnName="Actor1" />
+                <ScalarProperty Name="Duration1" ColumnName="Duration1" />
+                <ScalarProperty Name="Description1" ColumnName="Description1" />
+                <ScalarProperty Name="Detail1" ColumnName="Detail1" />
+                <ScalarProperty Name="Picture1" ColumnName="Picture1" />
+                <ScalarProperty Name="PictureBig1" ColumnName="PictureBig1" />
+                <ScalarProperty Name="Status3" ColumnName="Status3" />
+                <ScalarProperty Name="CouId3" ColumnName="CouId3" />
+                <ScalarProperty Name="NameCo1" ColumnName="NameCo1" />
+                <ScalarProperty Name="Status4" ColumnName="Status4" />
+                <ScalarProperty Name="TypId3" ColumnName="TypId3" />
+                <ScalarProperty Name="NameT1" ColumnName="NameT1" />
+                <ScalarProperty Name="Status5" ColumnName="Status5" />
+                <ScalarProperty Name="FilId2" ColumnName="FilId2" />
+                <ScalarProperty Name="TypId4" ColumnName="TypId4" />
+                <ScalarProperty Name="CouId4" ColumnName="CouId4" />
+                <ScalarProperty Name="NameF2" ColumnName="NameF2" />
+                <ScalarProperty Name="Director2" ColumnName="Director2" />
+                <ScalarProperty Name="Actor2" ColumnName="Actor2" />
+                <ScalarProperty Name="Duration2" ColumnName="Duration2" />
+                <ScalarProperty Name="Description2" ColumnName="Description2" />
+                <ScalarProperty Name="Detail2" ColumnName="Detail2" />
+                <ScalarProperty Name="Picture2" ColumnName="Picture2" />
+                <ScalarProperty Name="PictureBig2" ColumnName="PictureBig2" />
+                <ScalarProperty Name="Status6" ColumnName="Status6" />
+                <ScalarProperty Name="CouId5" ColumnName="CouId5" />
+                <ScalarProperty Name="NameCo2" ColumnName="NameCo2" />
+                <ScalarProperty Name="Status7" ColumnName="Status7" />
+                <ScalarProperty Name="TypId5" ColumnName="TypId5" />
+                <ScalarProperty Name="NameT2" ColumnName="NameT2" />
+                <ScalarProperty Name="Status8" ColumnName="Status8" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_Film_GetByCouId" FunctionName="QLRPCNSModel.Store.sp_Film_GetByCouId">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QLRPCNSModel.sp_Film_GetByCouId_Result">
+                <ScalarProperty Name="FilId" ColumnName="FilId" />
+                <ScalarProperty Name="TypId" ColumnName="TypId" />
+                <ScalarProperty Name="CouId" ColumnName="CouId" />
+                <ScalarProperty Name="NameF" ColumnName="NameF" />
+                <ScalarProperty Name="Director" ColumnName="Director" />
+                <ScalarProperty Name="Actor" ColumnName="Actor" />
+                <ScalarProperty Name="Duration" ColumnName="Duration" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Detail" ColumnName="Detail" />
+                <ScalarProperty Name="Picture" ColumnName="Picture" />
+                <ScalarProperty Name="PictureBig" ColumnName="PictureBig" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_Film_GetById" FunctionName="QLRPCNSModel.Store.sp_Film_GetById">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QLRPCNSModel.sp_Film_GetById_Result">
+                <ScalarProperty Name="FilId" ColumnName="FilId" />
+                <ScalarProperty Name="TypId" ColumnName="TypId" />
+                <ScalarProperty Name="CouId" ColumnName="CouId" />
+                <ScalarProperty Name="NameF" ColumnName="NameF" />
+                <ScalarProperty Name="Director" ColumnName="Director" />
+                <ScalarProperty Name="Actor" ColumnName="Actor" />
+                <ScalarProperty Name="Duration" ColumnName="Duration" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Detail" ColumnName="Detail" />
+                <ScalarProperty Name="Picture" ColumnName="Picture" />
+                <ScalarProperty Name="PictureBig" ColumnName="PictureBig" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="CouId1" ColumnName="CouId1" />
+                <ScalarProperty Name="NameCo" ColumnName="NameCo" />
+                <ScalarProperty Name="Status1" ColumnName="Status1" />
+                <ScalarProperty Name="TypId1" ColumnName="TypId1" />
+                <ScalarProperty Name="NameT" ColumnName="NameT" />
+                <ScalarProperty Name="Status2" ColumnName="Status2" />
+                <ScalarProperty Name="FilId1" ColumnName="FilId1" />
+                <ScalarProperty Name="TypId2" ColumnName="TypId2" />
+                <ScalarProperty Name="CouId2" ColumnName="CouId2" />
+                <ScalarProperty Name="NameF1" ColumnName="NameF1" />
+                <ScalarProperty Name="Director1" ColumnName="Director1" />
+                <ScalarProperty Name="Actor1" ColumnName="Actor1" />
+                <ScalarProperty Name="Duration1" ColumnName="Duration1" />
+                <ScalarProperty Name="Description1" ColumnName="Description1" />
+                <ScalarProperty Name="Detail1" ColumnName="Detail1" />
+                <ScalarProperty Name="Picture1" ColumnName="Picture1" />
+                <ScalarProperty Name="PictureBig1" ColumnName="PictureBig1" />
+                <ScalarProperty Name="Status3" ColumnName="Status3" />
+                <ScalarProperty Name="CouId3" ColumnName="CouId3" />
+                <ScalarProperty Name="NameCo1" ColumnName="NameCo1" />
+                <ScalarProperty Name="Status4" ColumnName="Status4" />
+                <ScalarProperty Name="TypId3" ColumnName="TypId3" />
+                <ScalarProperty Name="NameT1" ColumnName="NameT1" />
+                <ScalarProperty Name="Status5" ColumnName="Status5" />
+                <ScalarProperty Name="FilId2" ColumnName="FilId2" />
+                <ScalarProperty Name="TypId4" ColumnName="TypId4" />
+                <ScalarProperty Name="CouId4" ColumnName="CouId4" />
+                <ScalarProperty Name="NameF2" ColumnName="NameF2" />
+                <ScalarProperty Name="Director2" ColumnName="Director2" />
+                <ScalarProperty Name="Actor2" ColumnName="Actor2" />
+                <ScalarProperty Name="Duration2" ColumnName="Duration2" />
+                <ScalarProperty Name="Description2" ColumnName="Description2" />
+                <ScalarProperty Name="Detail2" ColumnName="Detail2" />
+                <ScalarProperty Name="Picture2" ColumnName="Picture2" />
+                <ScalarProperty Name="PictureBig2" ColumnName="PictureBig2" />
+                <ScalarProperty Name="Status6" ColumnName="Status6" />
+                <ScalarProperty Name="CouId5" ColumnName="CouId5" />
+                <ScalarProperty Name="NameCo2" ColumnName="NameCo2" />
+                <ScalarProperty Name="Status7" ColumnName="Status7" />
+                <ScalarProperty Name="TypId5" ColumnName="TypId5" />
+                <ScalarProperty Name="NameT2" ColumnName="NameT2" />
+                <ScalarProperty Name="Status8" ColumnName="Status8" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_Film_GetByTop" FunctionName="QLRPCNSModel.Store.sp_Film_GetByTop" />
+          <FunctionImportMapping FunctionImportName="sp_Film_GetByTypId" FunctionName="QLRPCNSModel.Store.sp_Film_GetByTypId">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QLRPCNSModel.sp_Film_GetByTypId_Result">
+                <ScalarProperty Name="FilId" ColumnName="FilId" />
+                <ScalarProperty Name="TypId" ColumnName="TypId" />
+                <ScalarProperty Name="CouId" ColumnName="CouId" />
+                <ScalarProperty Name="NameF" ColumnName="NameF" />
+                <ScalarProperty Name="Director" ColumnName="Director" />
+                <ScalarProperty Name="Actor" ColumnName="Actor" />
+                <ScalarProperty Name="Duration" ColumnName="Duration" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Detail" ColumnName="Detail" />
+                <ScalarProperty Name="Picture" ColumnName="Picture" />
+                <ScalarProperty Name="PictureBig" ColumnName="PictureBig" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_Film_Insert" FunctionName="QLRPCNSModel.Store.sp_Film_Insert" />
+          <FunctionImportMapping FunctionImportName="sp_Film_Update" FunctionName="QLRPCNSModel.Store.sp_Film_Update" />
+          <FunctionImportMapping FunctionImportName="sp_Film_Update_Status" FunctionName="QLRPCNSModel.Store.sp_Film_Update_Status" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="QLRPCNSModel.Store.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QLRPCNSModel.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="QLRPCNSModel.Store.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QLRPCNSModel.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="QLRPCNSModel.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_ShowTimes_Delete" FunctionName="QLRPCNSModel.Store.sp_ShowTimes_Delete" />
+          <FunctionImportMapping FunctionImportName="sp_ShowTimes_GetByAll" FunctionName="QLRPCNSModel.Store.sp_ShowTimes_GetByAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QLRPCNSModel.sp_ShowTimes_GetByAll_Result">
+                <ScalarProperty Name="ShoId" ColumnName="ShoId" />
+                <ScalarProperty Name="FilId" ColumnName="FilId" />
+                <ScalarProperty Name="CinId" ColumnName="CinId" />
+                <ScalarProperty Name="ShowTime" ColumnName="ShowTime" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="View" ColumnName="View" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="FilId1" ColumnName="FilId1" />
+                <ScalarProperty Name="TypId" ColumnName="TypId" />
+                <ScalarProperty Name="CouId" ColumnName="CouId" />
+                <ScalarProperty Name="NameF" ColumnName="NameF" />
+                <ScalarProperty Name="Director" ColumnName="Director" />
+                <ScalarProperty Name="Actor" ColumnName="Actor" />
+                <ScalarProperty Name="Duration" ColumnName="Duration" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Detail" ColumnName="Detail" />
+                <ScalarProperty Name="Picture" ColumnName="Picture" />
+                <ScalarProperty Name="PictureBig" ColumnName="PictureBig" />
+                <ScalarProperty Name="Status1" ColumnName="Status1" />
+                <ScalarProperty Name="CinId1" ColumnName="CinId1" />
+                <ScalarProperty Name="NameCi" ColumnName="NameCi" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Seats" ColumnName="Seats" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Status2" ColumnName="Status2" />
+                <ScalarProperty Name="ShoId1" ColumnName="ShoId1" />
+                <ScalarProperty Name="FilId2" ColumnName="FilId2" />
+                <ScalarProperty Name="CinId2" ColumnName="CinId2" />
+                <ScalarProperty Name="ShowTime1" ColumnName="ShowTime1" />
+                <ScalarProperty Name="Time1" ColumnName="Time1" />
+                <ScalarProperty Name="View1" ColumnName="View1" />
+                <ScalarProperty Name="Price1" ColumnName="Price1" />
+                <ScalarProperty Name="Status3" ColumnName="Status3" />
+                <ScalarProperty Name="FilId3" ColumnName="FilId3" />
+                <ScalarProperty Name="TypId1" ColumnName="TypId1" />
+                <ScalarProperty Name="CouId1" ColumnName="CouId1" />
+                <ScalarProperty Name="NameF1" ColumnName="NameF1" />
+                <ScalarProperty Name="Director1" ColumnName="Director1" />
+                <ScalarProperty Name="Actor1" ColumnName="Actor1" />
+                <ScalarProperty Name="Duration1" ColumnName="Duration1" />
+                <ScalarProperty Name="Description1" ColumnName="Description1" />
+                <ScalarProperty Name="Detail1" ColumnName="Detail1" />
+                <ScalarProperty Name="Picture1" ColumnName="Picture1" />
+                <ScalarProperty Name="PictureBig1" ColumnName="PictureBig1" />
+                <ScalarProperty Name="Status4" ColumnName="Status4" />
+                <ScalarProperty Name="CinId3" ColumnName="CinId3" />
+                <ScalarProperty Name="NameCi1" ColumnName="NameCi1" />
+                <ScalarProperty Name="Address1" ColumnName="Address1" />
+                <ScalarProperty Name="Seats1" ColumnName="Seats1" />
+                <ScalarProperty Name="Phone1" ColumnName="Phone1" />
+                <ScalarProperty Name="Image1" ColumnName="Image1" />
+                <ScalarProperty Name="Status5" ColumnName="Status5" />
+                <ScalarProperty Name="ShoId2" ColumnName="ShoId2" />
+                <ScalarProperty Name="FilId4" ColumnName="FilId4" />
+                <ScalarProperty Name="CinId4" ColumnName="CinId4" />
+                <ScalarProperty Name="ShowTime2" ColumnName="ShowTime2" />
+                <ScalarProperty Name="Time2" ColumnName="Time2" />
+                <ScalarProperty Name="View2" ColumnName="View2" />
+                <ScalarProperty Name="Price2" ColumnName="Price2" />
+                <ScalarProperty Name="Status6" ColumnName="Status6" />
+                <ScalarProperty Name="FilId5" ColumnName="FilId5" />
+                <ScalarProperty Name="TypId2" ColumnName="TypId2" />
+                <ScalarProperty Name="CouId2" ColumnName="CouId2" />
+                <ScalarProperty Name="NameF2" ColumnName="NameF2" />
+                <ScalarProperty Name="Director2" ColumnName="Director2" />
+                <ScalarProperty Name="Actor2" ColumnName="Actor2" />
+                <ScalarProperty Name="Duration2" ColumnName="Duration2" />
+                <ScalarProperty Name="Description2" ColumnName="Description2" />
+                <ScalarProperty Name="Detail2" ColumnName="Detail2" />
+                <ScalarProperty Name="Picture2" ColumnName="Picture2" />
+                <ScalarProperty Name="PictureBig2" ColumnName="PictureBig2" />
+                <ScalarProperty Name="Status7" ColumnName="Status7" />
+                <ScalarProperty Name="CinId5" ColumnName="CinId5" />
+                <ScalarProperty Name="NameCi2" ColumnName="NameCi2" />
+                <ScalarProperty Name="Address2" ColumnName="Address2" />
+                <ScalarProperty Name="Seats2" ColumnName="Seats2" />
+                <ScalarProperty Name="Phone2" ColumnName="Phone2" />
+                <ScalarProperty Name="Image2" ColumnName="Image2" />
+                <ScalarProperty Name="Status8" ColumnName="Status8" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_ShowTimes_GetByCinId" FunctionName="QLRPCNSModel.Store.sp_ShowTimes_GetByCinId">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QLRPCNSModel.sp_ShowTimes_GetByCinId_Result">
+                <ScalarProperty Name="ShoId" ColumnName="ShoId" />
+                <ScalarProperty Name="FilId" ColumnName="FilId" />
+                <ScalarProperty Name="CinId" ColumnName="CinId" />
+                <ScalarProperty Name="ShowTime" ColumnName="ShowTime" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="View" ColumnName="View" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_ShowTimes_GetByFilId" FunctionName="QLRPCNSModel.Store.sp_ShowTimes_GetByFilId">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QLRPCNSModel.sp_ShowTimes_GetByFilId_Result">
+                <ScalarProperty Name="ShoId" ColumnName="ShoId" />
+                <ScalarProperty Name="FilId" ColumnName="FilId" />
+                <ScalarProperty Name="CinId" ColumnName="CinId" />
+                <ScalarProperty Name="ShowTime" ColumnName="ShowTime" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="View" ColumnName="View" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="CinId1" ColumnName="CinId1" />
+                <ScalarProperty Name="NameCi" ColumnName="NameCi" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Seats" ColumnName="Seats" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Status1" ColumnName="Status1" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_ShowTimes_GetById" FunctionName="QLRPCNSModel.Store.sp_ShowTimes_GetById">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QLRPCNSModel.sp_ShowTimes_GetById_Result">
+                <ScalarProperty Name="ShoId" ColumnName="ShoId" />
+                <ScalarProperty Name="FilId" ColumnName="FilId" />
+                <ScalarProperty Name="CinId" ColumnName="CinId" />
+                <ScalarProperty Name="ShowTime" ColumnName="ShowTime" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="View" ColumnName="View" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="FilId1" ColumnName="FilId1" />
+                <ScalarProperty Name="TypId" ColumnName="TypId" />
+                <ScalarProperty Name="CouId" ColumnName="CouId" />
+                <ScalarProperty Name="NameF" ColumnName="NameF" />
+                <ScalarProperty Name="Director" ColumnName="Director" />
+                <ScalarProperty Name="Actor" ColumnName="Actor" />
+                <ScalarProperty Name="Duration" ColumnName="Duration" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Detail" ColumnName="Detail" />
+                <ScalarProperty Name="Picture" ColumnName="Picture" />
+                <ScalarProperty Name="PictureBig" ColumnName="PictureBig" />
+                <ScalarProperty Name="Status1" ColumnName="Status1" />
+                <ScalarProperty Name="CinId1" ColumnName="CinId1" />
+                <ScalarProperty Name="NameCi" ColumnName="NameCi" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Seats" ColumnName="Seats" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Status2" ColumnName="Status2" />
+                <ScalarProperty Name="ShoId1" ColumnName="ShoId1" />
+                <ScalarProperty Name="FilId2" ColumnName="FilId2" />
+                <ScalarProperty Name="CinId2" ColumnName="CinId2" />
+                <ScalarProperty Name="ShowTime1" ColumnName="ShowTime1" />
+                <ScalarProperty Name="Time1" ColumnName="Time1" />
+                <ScalarProperty Name="View1" ColumnName="View1" />
+                <ScalarProperty Name="Price1" ColumnName="Price1" />
+                <ScalarProperty Name="Status3" ColumnName="Status3" />
+                <ScalarProperty Name="FilId3" ColumnName="FilId3" />
+                <ScalarProperty Name="TypId1" ColumnName="TypId1" />
+                <ScalarProperty Name="CouId1" ColumnName="CouId1" />
+                <ScalarProperty Name="NameF1" ColumnName="NameF1" />
+                <ScalarProperty Name="Director1" ColumnName="Director1" />
+                <ScalarProperty Name="Actor1" ColumnName="Actor1" />
+                <ScalarProperty Name="Duration1" ColumnName="Duration1" />
+                <ScalarProperty Name="Description1" ColumnName="Description1" />
+                <ScalarProperty Name="Detail1" ColumnName="Detail1" />
+                <ScalarProperty Name="Picture1" ColumnName="Picture1" />
+                <ScalarProperty Name="PictureBig1" ColumnName="PictureBig1" />
+                <ScalarProperty Name="Status4" ColumnName="Status4" />
+                <ScalarProperty Name="CinId3" ColumnName="CinId3" />
+                <ScalarProperty Name="NameCi1" ColumnName="NameCi1" />
+                <ScalarProperty Name="Address1" ColumnName="Address1" />
+                <ScalarProperty Name="Seats1" ColumnName="Seats1" />
+                <ScalarProperty Name="Phone1" ColumnName="Phone1" />
+                <ScalarProperty Name="Image1" ColumnName="Image1" />
+                <ScalarProperty Name="Status5" ColumnName="Status5" />
+                <ScalarProperty Name="ShoId2" ColumnName="ShoId2" />
+                <ScalarProperty Name="FilId4" ColumnName="FilId4" />
+                <ScalarProperty Name="CinId4" ColumnName="CinId4" />
+                <ScalarProperty Name="ShowTime2" ColumnName="ShowTime2" />
+                <ScalarProperty Name="Time2" ColumnName="Time2" />
+                <ScalarProperty Name="View2" ColumnName="View2" />
+                <ScalarProperty Name="Price2" ColumnName="Price2" />
+                <ScalarProperty Name="Status6" ColumnName="Status6" />
+                <ScalarProperty Name="FilId5" ColumnName="FilId5" />
+                <ScalarProperty Name="TypId2" ColumnName="TypId2" />
+                <ScalarProperty Name="CouId2" ColumnName="CouId2" />
+                <ScalarProperty Name="NameF2" ColumnName="NameF2" />
+                <ScalarProperty Name="Director2" ColumnName="Director2" />
+                <ScalarProperty Name="Actor2" ColumnName="Actor2" />
+                <ScalarProperty Name="Duration2" ColumnName="Duration2" />
+                <ScalarProperty Name="Description2" ColumnName="Description2" />
+                <ScalarProperty Name="Detail2" ColumnName="Detail2" />
+                <ScalarProperty Name="Picture2" ColumnName="Picture2" />
+                <ScalarProperty Name="PictureBig2" ColumnName="PictureBig2" />
+                <ScalarProperty Name="Status7" ColumnName="Status7" />
+                <ScalarProperty Name="CinId5" ColumnName="CinId5" />
+                <ScalarProperty Name="NameCi2" ColumnName="NameCi2" />
+                <ScalarProperty Name="Address2" ColumnName="Address2" />
+                <ScalarProperty Name="Seats2" ColumnName="Seats2" />
+                <ScalarProperty Name="Phone2" ColumnName="Phone2" />
+                <ScalarProperty Name="Image2" ColumnName="Image2" />
+                <ScalarProperty Name="Status8" ColumnName="Status8" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_ShowTimes_GetByTop" FunctionName="QLRPCNSModel.Store.sp_ShowTimes_GetByTop" />
+          <FunctionImportMapping FunctionImportName="sp_ShowTimes_GetByTop1" FunctionName="QLRPCNSModel.Store.sp_ShowTimes_GetByTop1" />
+          <FunctionImportMapping FunctionImportName="sp_ShowTimes_GetByTop2" FunctionName="QLRPCNSModel.Store.sp_ShowTimes_GetByTop2" />
+          <FunctionImportMapping FunctionImportName="sp_ShowTimes_Insert" FunctionName="QLRPCNSModel.Store.sp_ShowTimes_Insert" />
+          <FunctionImportMapping FunctionImportName="sp_ShowTimes_Update" FunctionName="QLRPCNSModel.Store.sp_ShowTimes_Update" />
+          <FunctionImportMapping FunctionImportName="sp_ShowTimes_Update_Price" FunctionName="QLRPCNSModel.Store.sp_ShowTimes_Update_Price" />
+          <FunctionImportMapping FunctionImportName="sp_ShowTimes_Update_Status" FunctionName="QLRPCNSModel.Store.sp_ShowTimes_Update_Status" />
+          <FunctionImportMapping FunctionImportName="sp_ShowTimes_Update_View" FunctionName="QLRPCNSModel.Store.sp_ShowTimes_Update_View" />
+          <FunctionImportMapping FunctionImportName="sp_TypeFilm_Delete" FunctionName="QLRPCNSModel.Store.sp_TypeFilm_Delete" />
+          <FunctionImportMapping FunctionImportName="sp_TypeFilm_GetByAll" FunctionName="QLRPCNSModel.Store.sp_TypeFilm_GetByAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QLRPCNSModel.sp_TypeFilm_GetByAll_Result">
+                <ScalarProperty Name="TypId" ColumnName="TypId" />
+                <ScalarProperty Name="NameT" ColumnName="NameT" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_TypeFilm_GetById" FunctionName="QLRPCNSModel.Store.sp_TypeFilm_GetById">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QLRPCNSModel.sp_TypeFilm_GetById_Result">
+                <ScalarProperty Name="TypId" ColumnName="TypId" />
+                <ScalarProperty Name="NameT" ColumnName="NameT" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_TypeFilm_GetByTop" FunctionName="QLRPCNSModel.Store.sp_TypeFilm_GetByTop" />
+          <FunctionImportMapping FunctionImportName="sp_TypeFilm_Insert" FunctionName="QLRPCNSModel.Store.sp_TypeFilm_Insert" />
+          <FunctionImportMapping FunctionImportName="sp_TypeFilm_Update" FunctionName="QLRPCNSModel.Store.sp_TypeFilm_Update" />
+          <FunctionImportMapping FunctionImportName="sp_TypeFilm_Update_Status" FunctionName="QLRPCNSModel.Store.sp_TypeFilm_Update_Status" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="QLRPCNSModel.Store.sp_upgraddiagrams" />
+          <FunctionImportMapping FunctionImportName="sp_Customer_GetByAlls" FunctionName="QLRPCNSModel.Store.sp_Customer_GetByAll" />
+          <FunctionImportMapping FunctionImportName="get_KH" FunctionName="QLRPCNSModel.Store.sp_Customer_GetById" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
